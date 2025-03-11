@@ -15,11 +15,11 @@ const Hero = () => {
           alt="Dumpster rental service" 
           fill 
           sizes="100vw"
-          className="object-cover brightness-[0.7]"
+          className="object-cover brightness-[0.6]"
           priority
         />
       </div>
-      <div className="absolute inset-0 z-10 flex flex-col justify-center items-center text-center small:p-32 gap-6 bg-gradient-to-br from-black/90 via-black/70 to-black/30">
+      <div className="absolute inset-0 z-10 flex flex-col justify-center items-center text-center small:p-32 gap-6 bg-gradient-to-br from-black/95 via-black/85 to-black/50">
         <span className="max-w-5xl px-4">
           <Heading
             level="h1"
@@ -40,12 +40,12 @@ const Hero = () => {
         
         {/* Zip Code Search Box */}
         <div className="w-full max-w-xl px-4 mb-8">
-          <div className="bg-white/95 backdrop-blur-md p-6 rounded-lg shadow-xl border-l-4 border-orange-600">
-            <h3 className="text-xl font-bold text-gray-800 mb-4">Find Dumpster Rentals Near You</h3>
+          <div className="bg-white/98 backdrop-blur-md p-8 rounded-lg shadow-2xl border-l-4 border-orange-600">
+            <h3 className="text-2xl font-bold text-gray-800 mb-6">Find Dumpster Rentals Near You</h3>
             <ZipCodeSearch 
               buttonText="Get Started" 
               placeholder="Enter your ZIP code"
-              className="text-lg"
+              className="text-lg font-medium"
             />
           </div>
         </div>
