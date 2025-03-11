@@ -97,4 +97,4 @@ const CitySelector = () => {
   )
 }
 
-export default CitySelector
+export default React.memo(CitySelector)
