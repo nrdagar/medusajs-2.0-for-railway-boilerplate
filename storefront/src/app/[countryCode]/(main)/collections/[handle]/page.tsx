@@ -67,21 +67,28 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const metadata = {
     title: `${collection.title} | ${STORE_NAME} - NYC Dumpster Rental`,
     description,
+    alternates: {
+      canonical: `${process.env.NEXT_PUBLIC_BASE_URL || 'https://jbsdumpster.com'}/collections/${collection.handle}`,
+    },
     keywords: [
       `${collection.title.toLowerCase()} NYC`,
       ...boroughs.map(borough => `${collection.title.toLowerCase()} ${borough}`),
-      "construction dumpster collection",
-      "demolition waste containers",
-      "renovation dumpster rentals",
+      "construction dumpster collection NYC",
+      "demolition waste containers NYC",
+      "renovation dumpster rentals NYC",
       "bulk waste removal NYC",
-      "commercial dumpster service",
-      "residential waste container",
-      "same day dumpster delivery"
+      "commercial dumpster service NYC",
+      "residential waste container NYC",
+      "same day dumpster delivery NYC",
+      "affordable dumpster collection NYC"
     ],
     openGraph: {
       title: `${collection.title} | ${STORE_NAME} - NYC Dumpster Rental`,
       description,
       type: "website",
+      locale: "en_US",
+      siteName: STORE_NAME,
+      url: `${process.env.NEXT_PUBLIC_BASE_URL || 'https://jbsdumpster.com'}/collections/${collection.handle}`,
       images: collection.metadata?.images ? [
         {
           url: collection.metadata.images[0],
@@ -89,13 +96,20 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
           height: 600,
           alt: `${collection.title} - Dumpster Rental Collection in NYC`
         }
-      ] : [],
+      ] : [
+        {
+          url: `${process.env.NEXT_PUBLIC_BASE_URL || 'https://jbsdumpster.com'}/images/og-image.jpg`,
+          width: 1200,
+          height: 630,
+          alt: `${collection.title} - Dumpster Rental Collection in NYC`
+        }
+      ],
     },
     twitter: {
       card: "summary_large_image",
       title: `${collection.title} | ${STORE_NAME}`,
       description,
-      images: collection.metadata?.images ? [collection.metadata.images[0]] : [],
+      images: collection.metadata?.images ? [collection.metadata.images[0]] : [`${process.env.NEXT_PUBLIC_BASE_URL || 'https://jbsdumpster.com'}/images/og-image.jpg`],
     }
   } as Metadata
 
