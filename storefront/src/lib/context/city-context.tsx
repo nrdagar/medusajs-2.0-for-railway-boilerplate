@@ -22,21 +22,21 @@ export const CityProvider: React.FC<{ children: React.ReactNode }> = ({
 }) => {
   const [selectedCityId, setSelectedCityId] = useLocalStorage<CityId>("selectedCity", DEFAULT_CITY)
   const [isFirstVisit, setIsFirstVisit] = useLocalStorage<boolean>("isFirstVisit", true)
-  const [showCitySelector, openCitySelector, closeCitySelector] = useToggleState(isFirstVisit)
+  const [showCitySelector, openCitySelector, closeCitySelector] = useToggleState(false)
   
+  // Show city selector on first visit and handle closing
+  useEffect(() => {
+    if (isFirstVisit) {
+      openCitySelector()
+    }
+  }, [isFirstVisit, openCitySelector])
+
   // Update first visit status when modal is closed
   useEffect(() => {
     if (!showCitySelector && isFirstVisit) {
       setIsFirstVisit(false)
     }
   }, [showCitySelector, isFirstVisit, setIsFirstVisit])
-  
-  // Open city selector on first visit
-  useEffect(() => {
-    if (isFirstVisit) {
-      openCitySelector()
-    }
-  }, [isFirstVisit, openCitySelector])
 
   const setSelectedCity = (cityId: CityId) => {
     setSelectedCityId(cityId)
