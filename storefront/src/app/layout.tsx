@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     default: `${STORE_NAME} - Dumpster Rental Services in NYC`,
   },
   verification: {
-    google: "YOUR_GOOGLE_SITE_VERIFICATION_CODE", // Replace with actual verification code from Google Search Console
+    google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION,
   },
 }
 
