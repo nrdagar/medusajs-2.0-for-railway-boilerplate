@@ -36,12 +36,12 @@ const WhyChooseUs = () => {
           </Text>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 px-4 sm:px-0">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 sm:gap-10 px-4 sm:px-0">
           {benefits.map((benefit) => (
-            <div key={benefit.id} className="flex flex-col p-6 sm:p-8 bg-grey-5 rounded-xl shadow-md hover:shadow-xl transition-all transform hover:scale-[1.02]">
+            <div key={benefit.id} className="flex flex-col p-8 sm:p-10 bg-white rounded-lg shadow-lg hover:shadow-xl transition-all transform hover:translate-y-[-5px] border-t-4 border-orange-600">
               <div className="flex items-center mb-6 sm:mb-8">
-                <div className="w-16 h-16 mr-4 sm:mr-6 bg-orange-500 flex items-center justify-center rounded-full shadow-md">
-                  <Image src={benefit.icon} width={32} height={32} alt={benefit.title} className="text-white" />
+                <div className="w-16 h-16 mr-5 sm:mr-6 bg-orange-600 flex items-center justify-center rounded-lg shadow-lg">
+                  <Image src={benefit.icon} width={36} height={36} alt={benefit.title} className="text-white" />
                 </div>
                 <Heading level="h3" className="text-xl sm:text-2xl font-bold text-grey-90">
                   {benefit.title}
