@@ -322,7 +322,7 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "/images/og-image.jpg",
+        url: "/opengraph-image",
         width: 1200,
         height: 630,
         alt: "JBS Builder Lic Dumpster Rental Services - NYC's Premier Waste Management Solution",
@@ -333,7 +333,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: `${STORE_NAME} - NYC Dumpster Rental Services`,
     description: "Top-rated dumpster rental in NYC. 10-40 yard dumpsters for construction, demolition, renovation & cleanouts. Same-day delivery in Queens, Brooklyn, Manhattan & Bronx.",
-    images: ["/images/og-image.jpg"],
+    images: ["/twitter-image"],
   }
 }
 
