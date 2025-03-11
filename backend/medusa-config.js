@@ -127,7 +127,12 @@ const medusaConfig = {
           },
         ],
       },
-    }] : [])
+    }] : []),
+    // Temporarily commenting out the contact module due to configuration issues
+    // {
+    //   resolve: './src/modules/contact',
+    //   options: {}
+    // }
   ],
   plugins: [
   ...(MEILISEARCH_HOST && MEILISEARCH_ADMIN_KEY ? [{
