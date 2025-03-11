@@ -341,6 +341,11 @@ export default function Home() {
   // Structured data for the homepage
   const organizationSchema = createOrganizationSchema()
   const localBusinessSchema = createLocalBusinessSchema()
+  const faqSchema = createFAQSchema()
+  const ratingSchema = createAggregateRatingSchema()
+  const breadcrumbSchema = createBreadcrumbSchema([
+    { name: "Home", item: "/" }
+  ])
   
   return (
     <>
@@ -354,6 +359,21 @@ export default function Home() {
         id="local-business-schema"
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
+      />
+      <Script
+        id="faq-schema"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
+      <Script
+        id="rating-schema"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(ratingSchema) }}
+      />
+      <Script
+        id="breadcrumb-schema"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
       
       <Hero />

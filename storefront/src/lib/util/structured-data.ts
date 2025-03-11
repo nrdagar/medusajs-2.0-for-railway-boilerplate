@@ -106,6 +106,92 @@ export const createServiceSchema = (service: DumpsterService) => {
   }
 }
 
+export const createFAQSchema = () => {
+  return {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What size dumpster do I need for my project?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "For home renovations and small cleanouts, a 10-yard dumpster is typically sufficient. For larger projects like construction or complete home cleanouts, we recommend 20-40 yard dumpsters. Contact us for a personalized recommendation based on your specific needs."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How long can I keep the dumpster?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Standard rental periods are 7-10 days, but we offer flexible rental periods to accommodate your project timeline. Contact us for custom rental duration options."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Do I need a permit for a dumpster in NYC?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Permits are typically required for street placement in NYC. However, if the dumpster is placed on your private property, no permit is needed. We can assist with permit acquisition if necessary."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What areas do you serve in NYC?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "We provide dumpster rental services throughout NYC, including Queens, Brooklyn, Manhattan, and the Bronx. We offer same-day delivery in most service areas."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What materials are not allowed in the dumpster?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Hazardous materials, batteries, paint, oils, asbestos, and certain electronics cannot be disposed of in our dumpsters. Contact us for a complete list of prohibited items."
+        }
+      }
+    ]
+  }
+}
+
+export const createAggregateRatingSchema = () => {
+  return {
+    "@context": "https://schema.org",
+    "@type": "AggregateRating",
+    "itemReviewed": {
+      "@type": "LocalBusiness",
+      "name": STORE_NAME,
+      "image": `${process.env.NEXT_PUBLIC_BASE_URL || "https://jbsdumpster.com"}/images/logo.png`,
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "123 Main St",
+        "addressLocality": "New York",
+        "addressRegion": "NY",
+        "postalCode": "11354",
+        "addressCountry": "US"
+      }
+    },
+    "ratingValue": "4.8",
+    "reviewCount": "127",
+    "bestRating": "5",
+    "worstRating": "1"
+  }
+}
+
+export const createBreadcrumbSchema = (items: Array<{name: string, item: string}>) => {
+  return {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": items.map((item, index) => ({
+      "@type": "ListItem",
+      "position": index + 1,
+      "name": item.name,
+      "item": `${process.env.NEXT_PUBLIC_BASE_URL || "https://jbsdumpster.com"}${item.item}`
+    }))
+  }
+}
+
 export const createLocalBusinessSchema = () => {
   return {
     "@context": "https://schema.org",
