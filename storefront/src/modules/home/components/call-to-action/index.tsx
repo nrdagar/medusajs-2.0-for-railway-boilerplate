@@ -1,7 +1,7 @@
 import { Heading, Text, Button } from "@medusajs/ui"
 import React from "react"
 import Image from "next/image"
-import { useCity } from "../../../../lib/context/city-context"
+import { useCity } from "@lib/context/city-context"
 
 const CallToAction = () => {
   const { selectedCity } = useCity()

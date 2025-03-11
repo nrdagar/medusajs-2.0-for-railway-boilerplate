@@ -1,10 +1,10 @@
 "use client"
 
 import React from "react"
-import Modal from "../../../../modules/common/components/modal"
+import Modal from "@modules/common/components/modal"
 import { Button, Heading, Text } from "@medusajs/ui"
 // Removed @medusajs/icons import since it's not available
-import { useCity } from "../../../../lib/context/city-context"
+import { useCity } from "@lib/context/city-context"
 
 const PhonePopup = ({
   isOpen,

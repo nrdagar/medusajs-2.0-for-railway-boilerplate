@@ -3,9 +3,9 @@
 import React, { useState } from "react"
 import Modal from "../modal"
 import { Button, Heading, Text } from "@medusajs/ui"
-import { useCity } from "../../../../lib/context/city-context"
-import { CITIES } from "../../../../lib/config/cities"
-import { CityId } from "../../../../lib/types/city"
+import { useCity } from "@lib/context/city-context"
+import { CITIES } from "@lib/config/cities"
+import { CityId } from "@lib/types/city"
 import Image from "next/image"
 
 const CitySelector = () => {
