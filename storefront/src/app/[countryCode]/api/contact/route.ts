@@ -9,17 +9,22 @@ export async function POST(req: NextRequest) {
       email: formData.get("email") as string,
       phone: formData.get("phone") as string,
       service: formData.get("service") as string,
+      address: formData.get("address") as string,
       message: formData.get("message") as string,
-      created_at: new Date().toISOString(),
     }
     
-    // Store in Medusa custom table or use a simple JSON file for demo
-    // For this example, we'll log the data and return success
-    // In a real implementation, you would store this in a database
-    console.log("Contact form submission:", contactData)
+    // Send data to Medusa backend
+    const response = await fetch(`${process.env.NEXT_PUBLIC_MEDUSA_BACKEND_URL}/store/contact-form`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(contactData),
+    })
     
-    // You can implement actual storage here using Medusa's API
-    // For example, creating a custom entity or using metadata
+    if (!response.ok) {
+      throw new Error("Failed to submit form to backend")
+    }
     
     return NextResponse.json({ success: true })
   } catch (error) {
