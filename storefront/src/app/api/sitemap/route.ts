@@ -45,7 +45,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     countryCodes.forEach(code => {
       sitemapEntries.push({
         url: `${baseUrl}/${code}/products/${product.handle}`,
-        lastModified: new Date(product.updated_at),
+        lastModified: product.updated_at ? new Date(product.updated_at) : new Date(),
         changeFrequency: 'weekly',
         priority: 0.8,
       })
