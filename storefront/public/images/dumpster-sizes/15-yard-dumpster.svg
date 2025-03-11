@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400">
+  <!-- Base dumpster shape -->
+  <path d="M50,300 L750,300 L700,350 L100,350 Z" fill="#1B2A4A"/>
+  <path d="M100,100 L700,100 L750,300 L50,300 Z" fill="#1B2A4A"/>
+  <!-- Side ridges -->
+  <path d="M150,120 L650,120 M150,160 L650,160 M150,200 L650,200 M150,240 L650,240" stroke="#2C3E6F" stroke-width="10" fill="none"/>
+  <!-- Front panel -->
+  <path d="M100,350 L700,350 L700,380 L100,380 Z" fill="#152238"/>
+</svg>
