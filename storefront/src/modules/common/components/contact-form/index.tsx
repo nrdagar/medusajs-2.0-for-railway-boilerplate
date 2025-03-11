@@ -15,25 +15,12 @@ const ContactForm = ({ inFooter = false }: ContactFormProps) => {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [formSuccess, setFormSuccess] = useState(false)
   const [formError, setFormError] = useState<string | null>(null)
-  const [captchaToken, setCaptchaToken] = useState<string | null>(null)
-
-  const handleCaptchaChange = (token: string | null) => {
-    setCaptchaToken(token)
-  }
-
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     setIsSubmitting(true)
     setFormError(null)
 
-    if (!captchaToken) {
-      setFormError("Please complete the captcha")
-      setIsSubmitting(false)
-      return
-    }
-
     const formData = new FormData(e.currentTarget)
-    formData.append('captchaToken', captchaToken)
     
     try {
       const response = await fetch(`/${window.location.pathname.split('/')[1]}/api/contact`, {
@@ -126,12 +113,7 @@ const ContactForm = ({ inFooter = false }: ContactFormProps) => {
               </div>
             </div>
             
-            <div className="flex justify-center my-4">
-              <ReCAPTCHA
-                sitekey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"
-                onChange={handleCaptchaChange}
-              />
-            </div>
+            {/* ReCAPTCHA removed for local testing */}
             
             {formError && (
               <div className="bg-red-50 p-4 rounded-md text-red-800 text-center mb-4">
