@@ -1,6 +1,7 @@
 import { Suspense } from "react"
 import { STORE_NAME } from "@lib/constants"
 import { Phone } from "@medusajs/icons"
+import { CITIES } from "@lib/config/cities"
 
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
 import CartButton from "@modules/layout/components/cart-button"
@@ -37,6 +38,31 @@ export default async function Nav() {
 
           <div className="flex items-center gap-x-6 h-full justify-end">
             <div className="hidden small:flex items-center gap-x-6 h-full">
+              <div className="relative group">
+                <LocalizedClientLink
+                  className="text-grey-60 hover:text-orange-500 transition-colors"
+                  href="/service-area/queens-ny"
+                >
+                  Service Areas
+                </LocalizedClientLink>
+                <div className="absolute left-0 mt-2 w-48 bg-white shadow-lg rounded-md overflow-hidden z-50 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+                  {Object.values(CITIES).map((city) => (
+                    <LocalizedClientLink
+                      key={city.id}
+                      href={`/service-area/${city.slug}`}
+                      className="block px-4 py-2 text-grey-60 hover:bg-grey-5 hover:text-orange-500 transition-colors"
+                    >
+                      {city.name}
+                    </LocalizedClientLink>
+                  ))}
+                </div>
+              </div>
+              <LocalizedClientLink
+                className="text-grey-60 hover:text-orange-500 transition-colors"
+                href="/about-us"
+              >
+                About Us
+              </LocalizedClientLink>
               {process.env.NEXT_PUBLIC_FEATURE_SEARCH_ENABLED && (
                 <LocalizedClientLink
                   className="text-grey-60 hover:text-orange-500 transition-colors"
