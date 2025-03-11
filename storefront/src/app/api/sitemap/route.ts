@@ -1,5 +1,4 @@
 import { MetadataRoute } from 'next'
-import { getProductsList } from "@lib/data/products"
 import { getCollectionsList } from "@lib/data/collections"
 import { getCategoriesList } from "@lib/data/categories"
 import { listRegions } from "@lib/data/regions"
@@ -21,8 +20,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // Use first country code for fetching data
   const countryCode = countryCodes[0]
   
-  // Get products, collections, and categories
-  const { response: productsResponse } = await getProductsList({ countryCode })
+  // Get collections and categories
   const { collections } = await getCollectionsList()
   const { product_categories } = await getCategoriesList()
   
@@ -39,17 +37,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     })
   })
   
-  // Add product pages
-  productsResponse.products.forEach(product => {
-    countryCodes.forEach(code => {
-      sitemapEntries.push({
-        url: `${baseUrl}/${code}/products/${product.handle}`,
-        lastModified: new Date(product.updated_at),
-        changeFrequency: 'weekly',
-        priority: 0.8,
-      })
-    })
-  })
+
   
   // Add collection pages
   collections.forEach(collection => {
