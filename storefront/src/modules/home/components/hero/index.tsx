@@ -39,12 +39,13 @@ const Hero = () => {
         </span>
         
         {/* Zip Code Search Box */}
-        <div className="w-full max-w-md px-4 mb-6">
-          <div className="bg-white/90 backdrop-blur-sm p-4 rounded-lg shadow-lg">
-            <h3 className="text-lg font-semibold text-gray-800 mb-3">Find Dumpster Rentals Near You</h3>
+        <div className="w-full max-w-xl px-4 mb-8">
+          <div className="bg-white/95 backdrop-blur-md p-6 rounded-lg shadow-xl border-l-4 border-orange-600">
+            <h3 className="text-xl font-bold text-gray-800 mb-4">Find Dumpster Rentals Near You</h3>
             <ZipCodeSearch 
               buttonText="Get Started" 
               placeholder="Enter your ZIP code"
+              className="text-lg"
             />
           </div>
         </div>
