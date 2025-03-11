@@ -31,7 +31,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title: `Dumpster Rental in ${city.fullName} | ${STORE_NAME}`,
     description: city.metaDescription,
     alternates: {
-      canonical: `/service-area/${city.slug}`,
+      canonical: `${process.env.NEXT_PUBLIC_BASE_URL || 'https://jbsdumpster.com'}/us/service-area/${city.slug}`,
     },
   }
 }
@@ -45,17 +45,9 @@ export default function ServiceAreaPage({ params }: Props) {
     notFound()
   }
 
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://jbsdumpster.com'
-  const canonicalUrl = `${baseUrl}/us/service-area/${params.citySlug}`
-
   return (
-    <>
-      <head>
-        <link rel="canonical" href={canonicalUrl} />
-      </head>
-      <Suspense fallback={<div>Loading...</div>}>
-        <ServiceAreaTemplate city={city} />
-      </Suspense>
-    </>
+    <Suspense fallback={<div>Loading...</div>}>
+      <ServiceAreaTemplate city={city} />
+    </Suspense>
   )
 }
