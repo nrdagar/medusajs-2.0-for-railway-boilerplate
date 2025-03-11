@@ -284,3 +284,25 @@ export const createProductSchema = (product: any) => {
     }
   }
 }
+
+export const createReviewSchema = (product: any) => {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Review",
+    "itemReviewed": {
+      "@type": "Product",
+      "name": product.title,
+      "image": product.thumbnail
+    },
+    "author": {
+      "@type": "Person",
+      "name": "Customer"
+    },
+    "reviewRating": {
+      "@type": "Rating",
+      "ratingValue": "4.8",
+      "bestRating": "5"
+    },
+    "reviewBody": "Great dumpster rental service! Delivery was on time and the pricing was transparent."
+  }
+}

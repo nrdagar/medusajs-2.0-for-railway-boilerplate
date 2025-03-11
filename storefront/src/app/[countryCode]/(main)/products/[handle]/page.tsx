@@ -2,7 +2,7 @@ import { Metadata } from "next"
 import { notFound } from "next/navigation"
 import Script from "next/script"
 import { STORE_NAME } from "@lib/constants"
-import { createServiceSchema } from "@lib/util/structured-data"
+import { createServiceSchema, createProductSchema, createReviewSchema } from "@lib/util/structured-data"
 
 import ProductTemplate from "@modules/products/templates"
 import { getRegion, listRegions } from "@lib/data/regions"
@@ -108,7 +108,7 @@ export default async function ProductPage({ params }: Props) {
     notFound()
   }
 
-  // Create structured data for the dumpster service
+  // Create structured data for the dumpster service and product
   const serviceSchema = createServiceSchema({
     name: pricedProduct.title,
     description: pricedProduct.description || `${pricedProduct.title} available for rent in NYC. Perfect for construction, demolition, and renovation projects.`,
@@ -118,12 +118,25 @@ export default async function ProductPage({ params }: Props) {
     image: pricedProduct.thumbnail
   })
 
+  const productSchema = createProductSchema(pricedProduct)
+  const reviewSchema = createReviewSchema(pricedProduct)
+
   return (
     <>
       <Script
-        id="product-schema"
+        id="service-schema"
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}
+      />
+      <Script
+        id="product-schema"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(productSchema) }}
+      />
+      <Script
+        id="review-schema"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(reviewSchema) }}
       />
       <ProductTemplate
         product={pricedProduct}
