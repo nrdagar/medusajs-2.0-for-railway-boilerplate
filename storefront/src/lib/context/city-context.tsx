@@ -26,20 +26,29 @@ export const CityProvider: React.FC<{ children: React.ReactNode }> = ({
   
   // Show city selector on first visit and handle closing
   useEffect(() => {
+    console.log('First Visit Effect:', { isFirstVisit, showCitySelector })
     if (isFirstVisit) {
+      console.log('Opening city selector...')
       openCitySelector()
     }
-  }, [isFirstVisit, openCitySelector])
+  }, [isFirstVisit, openCitySelector, showCitySelector])
 
   // Update first visit status when modal is closed
   useEffect(() => {
+    console.log('Modal Close Effect:', { showCitySelector, isFirstVisit })
     if (!showCitySelector && isFirstVisit) {
+      console.log('Setting first visit to false')
       setIsFirstVisit(false)
     }
   }, [showCitySelector, isFirstVisit, setIsFirstVisit])
 
   const setSelectedCity = (cityId: CityId) => {
+    console.log('Setting selected city:', cityId)
     setSelectedCityId(cityId)
+    if (isFirstVisit) {
+      console.log('Setting first visit to false after city selection')
+      setIsFirstVisit(false)
+    }
     closeCitySelector()
   }
 
