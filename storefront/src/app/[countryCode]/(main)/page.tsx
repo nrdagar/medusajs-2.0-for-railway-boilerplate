@@ -64,7 +64,20 @@ export const metadata: Metadata = {
     "reliable waste removal NYC",
     "fast dumpster delivery NYC",
     "best dumpster prices NYC",
-    "licensed dumpster service NYC"
+    "licensed dumpster service NYC",
+    // Price and quality rankings
+    "cheapest dumpster rental NYC",
+    "best dumpster rental service NYC",
+    "top rated dumpster company NYC",
+    "number one dumpster service NYC",
+    "most affordable waste removal NYC",
+    "lowest price dumpster rental NYC",
+    "best value dumpster service NYC",
+    "highest rated waste management NYC",
+    "premier dumpster rental NYC",
+    "top quality waste removal NYC",
+    "best reviewed dumpster service NYC",
+    "most reliable dumpster rental NYC"
   ],
   alternates: {
     canonical: "/",
