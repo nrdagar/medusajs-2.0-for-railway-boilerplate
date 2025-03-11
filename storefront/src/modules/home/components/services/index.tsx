@@ -123,13 +123,13 @@ const Services = () => {
                 </div>
                 
                 {/* Dumpster Image with Dimensions */}
-                <div className="p-6 flex justify-center relative">
+                <div className="p-6 flex justify-center relative bg-[#1B2A4A]/5">
                   <Image 
-                    src={`/images/dumpster-sizes/${service.id}-dumpster.jpg`}
+                    src={`/images/dumpster-sizes/${service.id}-dumpster.svg`}
                     alt={service.title} 
-                    width={280}
-                    height={160}
-                    className="object-contain"
+                    width={400}
+                    height={200}
+                    className="object-contain drop-shadow-lg"
                     priority
                   />
                   
