@@ -25,7 +25,6 @@ export default function RootLayout(props: { children: React.ReactNode }) {
         <CityProvider>
           <main className="relative">{props.children}</main>
         </CityProvider>
-        <GoogleAnalytics />
         <Script
           id="organization-schema"
           type="application/ld+json"
@@ -41,6 +40,7 @@ export default function RootLayout(props: { children: React.ReactNode }) {
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(createFAQSchema()) }}
         />
+        <GoogleAnalytics />
       </body>
     </html>
   )
