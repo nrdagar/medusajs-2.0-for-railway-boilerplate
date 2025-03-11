@@ -4,6 +4,39 @@ export async function POST(req: NextRequest) {
   try {
     const formData = await req.formData()
     
+    // Get reCAPTCHA token
+    const captchaToken = formData.get("captchaToken") as string
+    
+    // Verify reCAPTCHA token
+    if (captchaToken) {
+      try {
+        const recaptchaResponse = await fetch(
+          `https://www.google.com/recaptcha/api/siteverify?secret=6LcUi_EqAAAAAGxXDylQU23L7_wbZ_HJ4RO4ljX6&response=${captchaToken}`,
+          { method: 'POST' }
+        )
+        
+        const recaptchaData = await recaptchaResponse.json()
+        
+        if (!recaptchaData.success) {
+          return NextResponse.json(
+            { error: "reCAPTCHA verification failed" },
+            { status: 400 }
+          )
+        }
+      } catch (recaptchaError) {
+        console.error("reCAPTCHA verification error:", recaptchaError)
+        return NextResponse.json(
+          { error: "Failed to verify reCAPTCHA" },
+          { status: 500 }
+        )
+      }
+    } else {
+      return NextResponse.json(
+        { error: "reCAPTCHA token is required" },
+        { status: 400 }
+      )
+    }
+    
     const contactData = {
       name: formData.get("name") as string,
       email: formData.get("email") as string,
