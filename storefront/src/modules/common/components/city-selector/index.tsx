@@ -1,7 +1,7 @@
 "use client"
 
 import React, { useState } from "react"
-import Modal from "@modules/common/components/modal"
+import Modal from "../modal"
 import { Button, Heading, Text } from "@medusajs/ui"
 import { useCity } from "../../../../lib/context/city-context"
 import { CITIES } from "../../../../lib/config/cities"
