@@ -7,9 +7,7 @@ const models = [ContactFormSubmission]
 
 export const CONTACT_FORM_MODULE_KEY = "contactFormService"
 
-const providerExport: ModuleProviderExports = {
-  services,
+export default {
+  service: ContactFormService,
   models,
 }
-
-export default providerExport
