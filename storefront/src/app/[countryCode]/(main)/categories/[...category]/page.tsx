@@ -60,8 +60,38 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       title: `${title} | JBS Builder Lic`,
       description,
       alternates: {
-        canonical: `${params.category.join("/")}`,
+        canonical: `${process.env.NEXT_PUBLIC_BASE_URL || 'https://jbsdumpster.com'}/${params.category.join("/")}`,
       },
+      openGraph: {
+        title: `${title} | JBS Builder Lic`,
+        description,
+        url: `${process.env.NEXT_PUBLIC_BASE_URL || 'https://jbsdumpster.com'}/${params.category.join("/")}`,
+        type: "website",
+        locale: "en_US",
+        siteName: "JBS Builder Lic",
+        images: [
+          {
+            url: `${process.env.NEXT_PUBLIC_BASE_URL || 'https://jbsdumpster.com'}/images/og-image.jpg`,
+            width: 1200,
+            height: 630,
+            alt: `${title} - Dumpster Rental Categories`,
+          },
+        ],
+      },
+      twitter: {
+        card: "summary_large_image",
+        title: `${title} | JBS Builder Lic`,
+        description,
+        images: [`${process.env.NEXT_PUBLIC_BASE_URL || 'https://jbsdumpster.com'}/images/og-image.jpg`],
+      },
+      keywords: [
+        `${title.toLowerCase()} dumpster rental NYC`,
+        `${title.toLowerCase()} waste management`,
+        "construction dumpster categories",
+        "dumpster rental services NYC",
+        "waste container categories",
+        "roll off dumpster types",
+      ],
     }
   } catch (error) {
     notFound()
