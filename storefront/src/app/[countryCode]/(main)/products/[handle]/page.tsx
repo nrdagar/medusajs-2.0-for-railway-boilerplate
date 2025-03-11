@@ -67,12 +67,15 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     description,
     keywords: [
       `${product.title.toLowerCase()} rental NYC`,
+      ...boroughs.map(borough => `${product.title.toLowerCase()} rental ${borough}`),
       ...boroughs.map(borough => `dumpster rental ${borough}`),
-      "construction waste container",
-      "demolition dumpster rental",
-      "renovation waste removal",
-      "same day dumpster delivery",
-      "HOA friendly dumpster service"
+      "construction waste container NYC",
+      "demolition dumpster rental NYC",
+      "renovation waste removal NYC",
+      "same day dumpster delivery NYC",
+      "HOA friendly dumpster service NYC",
+      "affordable dumpster rental NYC",
+      "roll off container rental NYC"
     ],
     openGraph: {
       title: `${product.title} | ${STORE_NAME} - NYC Dumpster Rental`,
@@ -111,11 +114,11 @@ export default async function ProductPage({ params }: Props) {
   // Create structured data for the dumpster service
   const serviceSchema = createServiceSchema({
     name: pricedProduct.title,
-    description: pricedProduct.description || `${pricedProduct.title} available for rent in NYC. Perfect for construction, demolition, and renovation projects.`,
+    description: pricedProduct.description || `${pricedProduct.title} available for rent in NYC. Perfect for construction, demolition, and renovation projects. Same-day delivery available in Queens, Brooklyn, Manhattan, and Bronx.`,
     price: pricedProduct.variants[0]?.prices[0]?.amount 
       ? `$${(pricedProduct.variants[0].prices[0].amount / 100).toFixed(2)}`
-      : undefined,
-    image: pricedProduct.thumbnail
+      : "Call for pricing",
+    image: pricedProduct.thumbnail || `${process.env.NEXT_PUBLIC_BASE_URL || 'https://jbsdumpster.com'}/images/og-image.jpg`
   })
 
   return (
