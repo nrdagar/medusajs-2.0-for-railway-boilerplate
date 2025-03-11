@@ -1,4 +1,5 @@
 import { Table } from "@medusajs/ui"
+import React from "react"
 
 const SkeletonLineItem = () => {
   return (

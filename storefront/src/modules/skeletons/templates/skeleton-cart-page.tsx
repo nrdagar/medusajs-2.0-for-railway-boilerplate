@@ -1,3 +1,5 @@
+import React from "react"
+
 const SkeletonCartPage = () => {
   return (
     <div className="content-container">

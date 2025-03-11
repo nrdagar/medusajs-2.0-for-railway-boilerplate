@@ -2,8 +2,6 @@
 
 import { InstantSearch } from "react-instantsearch-hooks-web"
 import { useRouter } from "next/navigation"
-import { MagnifyingGlassMini } from "@medusajs/icons"
-
 import { SEARCH_INDEX_NAME, searchClient } from "@lib/search-client"
 import Hit from "@modules/search/components/hit/index"
 import Hits from "@modules/search/components/hits"
@@ -68,11 +66,11 @@ export default function SearchModal() {
               data-testid="search-modal-container"
             >
               <div className="w-full flex items-center gap-x-2 p-4 bg-[rgba(3,7,18,0.5)] text-ui-fg-on-color backdrop-blur-2xl rounded-rounded">
-                <MagnifyingGlassMini />
+                <span className="text-ui-fg-on-color">🔍</span>
                 <SearchBox />
               </div>
               <div className="flex-1 mt-6">
-                <Hits hitComponent={Hit} />
+                <Hits />
               </div>
             </div>
           </InstantSearch>
