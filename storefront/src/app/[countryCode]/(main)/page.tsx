@@ -23,11 +23,19 @@ export const metadata: Metadata = {
     "construction dumpster Brooklyn",
     "waste container rental Manhattan",
     "debris removal Bronx",
+    "junk removal Queens",
+    "waste management Brooklyn",
+    "trash container Manhattan",
+    "garbage removal Bronx",
     // Size-specific keywords
     "10 yard dumpster rental NYC",
     "20 yard dumpster rental NYC",
     "30 yard dumpster rental NYC",
     "40 yard dumpster rental NYC",
+    "small dumpster rental NYC",
+    "medium dumpster rental NYC",
+    "large dumpster rental NYC",
+    "extra large dumpster rental NYC",
     // Service-specific keywords
     "residential dumpster rental NYC",
     "commercial dumpster rental NYC",
@@ -37,11 +45,26 @@ export const metadata: Metadata = {
     "basement cleanout dumpster NYC",
     "garage cleanout dumpster NYC",
     "roofing debris removal NYC",
+    "yard waste removal NYC",
+    "home renovation dumpster NYC",
+    "construction site dumpster NYC",
+    "property cleanout NYC",
+    // Project-specific keywords
+    "bathroom remodel dumpster NYC",
+    "kitchen renovation waste NYC",
+    "landscaping debris removal NYC",
+    "estate cleanout dumpster NYC",
+    "storm cleanup dumpster NYC",
+    "moving cleanout NYC",
     // Features and benefits
     "same day dumpster delivery NYC",
     "affordable dumpster rental NYC",
     "HOA friendly dumpster service NYC",
-    "local dumpster rental company NYC"
+    "local dumpster rental company NYC",
+    "reliable waste removal NYC",
+    "fast dumpster delivery NYC",
+    "best dumpster prices NYC",
+    "licensed dumpster service NYC"
   ],
   alternates: {
     canonical: "/",
