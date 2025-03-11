@@ -128,7 +128,7 @@ const ContactForm = ({ inFooter = false }: ContactFormProps) => {
             
             <div className="flex justify-center my-4">
               <ReCAPTCHA
-                sitekey="6LcUi_EqAAAAAHDadqZ6T-szHnw-4PBJ55CXP2Ar"
+                sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || "6LcUi_EqAAAAAHDadqZ6T-szHnw-4PBJ55CXP2Ar"}
                 onChange={handleCaptchaChange}
               />
             </div>
