@@ -11,15 +11,25 @@ export async function POST(req: NextRequest) {
     if (captchaToken) {
       try {
         const recaptchaResponse = await fetch(
-          `https://www.google.com/recaptcha/api/siteverify?secret=${process.env.RECAPTCHA_SECRET_KEY}&response=${captchaToken}`,
-          { method: 'POST' }
+          'https://www.google.com/recaptcha/api/siteverify',
+          {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/x-www-form-urlencoded'
+            },
+            body: new URLSearchParams({
+              secret: process.env.RECAPTCHA_SECRET_KEY,
+              response: captchaToken
+            }).toString()
+          }
         )
         
         const recaptchaData = await recaptchaResponse.json()
+        console.log("reCAPTCHA verification response:", recaptchaData)
         
         if (!recaptchaData.success) {
           return NextResponse.json(
-            { error: "reCAPTCHA verification failed" },
+            { error: recaptchaData["error-codes"]?.[0] || "reCAPTCHA verification failed" },
             { status: 400 }
           )
         }

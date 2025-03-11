@@ -1,7 +1,7 @@
 "use client"
 
 import { Button } from "@medusajs/ui"
-import React, { useState, useEffect } from "react"
+import React, { useState } from "react"
 import InputExternalLabel from "../input-external-label"
 import TextAreaExternalLabel from "../textarea-external-label"
 import ServiceSelectExternalLabel from "../service-select-external-label"
@@ -36,18 +36,21 @@ const ContactForm = ({ inFooter = false }: ContactFormProps) => {
     formData.append('captchaToken', captchaToken)
     
     try {
-      const response = await fetch(`/${window.location.pathname.split('/')[1]}/api/contact`, {
+      const response = await fetch('/us/api/contact', {
         method: "POST",
         body: formData
       })
 
+      const data = await response.json()
+      
       if (!response.ok) {
-        throw new Error("Failed to submit form")
+        throw new Error(data.error || "Failed to submit form")
       }
 
       setFormSuccess(true)
       const form = e.target as HTMLFormElement
       form.reset()
+      setCaptchaToken(null)
     } catch (error) {
       setFormError("An error occurred. Please try again.")
       console.error("Form submission error:", error)
@@ -128,7 +131,7 @@ const ContactForm = ({ inFooter = false }: ContactFormProps) => {
             
             <div className="flex justify-center my-4">
               <ReCAPTCHA
-                sitekey="6LcUi_EqAAAAAHDadqZ6T-szHnw-4PBJ55CXP2Ar"
+                sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}
                 onChange={handleCaptchaChange}
               />
             </div>

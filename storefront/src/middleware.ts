@@ -12,38 +12,17 @@ const regionMapCache = {
 }
 
 async function getRegionMap() {
-  const { regionMap, regionMapUpdated } = regionMapCache
-
-  if (
-    !regionMap.keys().next().value ||
-    regionMapUpdated < Date.now() - 3600 * 1000
-  ) {
-    // Fetch regions from Medusa. We can't use the JS client here because middleware is running on Edge and the client needs a Node environment.
-    const { regions } = await fetch(`${BACKEND_URL}/store/regions`, {
-      headers: {
-        "x-publishable-api-key": PUBLISHABLE_API_KEY!,
-      },
-      next: {
-        revalidate: 3600,
-        tags: ["regions"],
-      },
-    }).then((res) => res.json())
-
-    if (!regions?.length) {
-      notFound()
-    }
-
-    // Create a map of country codes to regions.
-    regions.forEach((region: HttpTypes.StoreRegion) => {
-      region.countries?.forEach((c) => {
-        regionMapCache.regionMap.set(c.iso_2 ?? "", region)
-      })
-    })
-
-    regionMapCache.regionMapUpdated = Date.now()
+  // Always return a map with just the US region since this is a US-only business
+  const usRegion = {
+    id: "reg_us",
+    name: "United States",
+    currency_code: "usd",
+    countries: [{ iso_2: "us", display_name: "United States" }]
   }
-
-  return regionMapCache.regionMap
+  
+  const regionMap = new Map()
+  regionMap.set("us", usRegion)
+  return regionMap
 }
 
 /**
