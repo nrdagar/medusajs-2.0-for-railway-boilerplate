@@ -1,34 +1,10 @@
 import { Heading, Text } from "@medusajs/ui"
 import React from "react"
 import Image from "next/image"
+import { CITIES } from "@lib/config/cities"
 
 const ServiceAreas = () => {
-  const areas = [
-    { 
-      id: 1, 
-      name: "Queens", 
-      description: "Same-day service available with flexible scheduling and competitive rates",
-      icon: "/icons/queens.svg" 
-    },
-    { 
-      id: 2, 
-      name: "Manhattan", 
-      description: "Fast delivery and pickup with special solutions for tight spaces",
-      icon: "/icons/manhattan.svg" 
-    },
-    { 
-      id: 3, 
-      name: "Brooklyn", 
-      description: "Reliable service with multiple dumpster size options",
-      icon: "/icons/brooklyn.svg" 
-    },
-    { 
-      id: 4, 
-      name: "Bronx", 
-      description: "Prompt delivery and excellent customer service guaranteed",
-      icon: "/icons/bronx.svg" 
-    }
-  ]
+  const areas = Object.values(CITIES)
 
   return (
     <div className="py-16 bg-grey-5 relative overflow-hidden">
