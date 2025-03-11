@@ -12,7 +12,7 @@ import LineItemPrice from "@modules/common/components/line-item-price"
 import LineItemUnitPrice from "@modules/common/components/line-item-unit-price"
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
 import Spinner from "@modules/common/icons/spinner"
-import Thumbnail from "@modules/products/components/thumbnail"
+
 import { useState } from "react"
 
 type ItemProps = {
@@ -49,19 +49,14 @@ const Item = ({ item, type = "full" }: ItemProps) => {
   return (
     <Table.Row className="w-full" data-testid="product-row">
       <Table.Cell className="!pl-0 p-4 w-24">
-        <LocalizedClientLink
-          href={`/products/${handle}`}
-          className={clx("flex", {
-            "w-16": type === "preview",
-            "small:w-24 w-12": type === "full",
+        <div
+          className={clx("flex bg-gray-100 items-center justify-center", {
+            "w-16 h-16": type === "preview",
+            "small:w-24 small:h-24 w-12 h-12": type === "full",
           })}
         >
-          <Thumbnail
-            thumbnail={item.variant?.product?.thumbnail}
-            images={item.variant?.product?.images}
-            size="square"
-          />
-        </LocalizedClientLink>
+          <span className="text-gray-500">Item</span>
+        </div>
       </Table.Cell>
 
       <Table.Cell className="text-left">
