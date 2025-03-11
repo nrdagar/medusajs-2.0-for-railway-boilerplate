@@ -68,9 +68,9 @@ const Services = () => {
         
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-8 sm:gap-10 xl:gap-12 px-4 sm:px-6 lg:px-8">
           {services.map((service) => (
-            <div key={service.id} className="flex flex-col bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 transform hover:scale-[1.02] border border-grey-10/50 hover:border-orange-500/20">
+            <div key={service.id} className="flex flex-col bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:translate-y-[-5px] border border-grey-20 hover:border-orange-600/30">
               <div className="h-52 sm:h-60 bg-grey-5 flex items-center justify-center relative overflow-hidden">
-                <div className="absolute top-4 right-4 z-10 bg-orange-500 text-white px-4 py-1.5 rounded-full text-sm font-semibold shadow">
+                <div className="absolute top-4 right-4 z-10 bg-orange-600 text-white px-4 py-1.5 rounded-md text-sm font-bold shadow-md">
                   {service.id.split('-')[0]} YD
                 </div>
                 <Image 
@@ -78,10 +78,10 @@ const Services = () => {
                   alt={service.title} 
                   fill 
                   sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, (max-width: 1280px) 33vw, 20vw"
-                  className="object-cover hover:scale-105 transition-transform duration-500"
+                  className="object-cover hover:scale-110 transition-transform duration-700"
                 />
               </div>
-              <div className="p-6 sm:p-7 flex-grow flex flex-col">
+              <div className="p-6 sm:p-8 flex-grow flex flex-col">
                 <Heading level="h3" className="text-xl sm:text-2xl font-bold mb-3 sm:mb-4 text-grey-90">
                   {service.title}
                 </Heading>
@@ -91,14 +91,14 @@ const Services = () => {
                 <ul className="mb-6 sm:mb-7 space-y-3 flex-grow">
                   {service.details.map((detail, index) => (
                     <li key={index} className="flex items-start text-grey-70 text-base">
-                      <span className="mr-2.5 text-orange-500 text-lg font-bold">✓</span>
+                      <span className="flex-shrink-0 w-5 h-5 mr-3 bg-green-100 text-green-600 rounded-full flex items-center justify-center text-sm font-bold">✓</span>
                       {detail}
                     </li>
                   ))}
                 </ul>
                 <Button 
                   variant="secondary" 
-                  className="w-full bg-orange-500 text-white hover:bg-orange-600 transition-all py-4 px-6 text-base font-semibold rounded-lg shadow hover:shadow-lg active:transform active:scale-[0.98]" 
+                  className="w-full bg-orange-600 text-white hover:bg-orange-700 transition-all py-4 px-6 text-base font-bold rounded-md shadow-md hover:shadow-lg active:transform active:translate-y-[2px]" 
                   onClick={() => {
                     setSelectedService(service.id)
                     openPhonePopup()
