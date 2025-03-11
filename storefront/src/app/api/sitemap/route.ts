@@ -1,68 +1,41 @@
 import { MetadataRoute } from 'next'
-import { getCollectionsList } from "@lib/data/collections"
-import { getCategoriesList } from "@lib/data/categories"
-import { listRegions } from "@lib/data/regions"
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://jbsdumpster.com'
   
-  // Only use US region since this is a US-only business
-  const countryCode = 'us'
-  const countryCodes = [countryCode]
-  
-  // Get collections and categories
-  const { collections } = await getCollectionsList()
-  const { product_categories } = await getCategoriesList()
-  
-  // Create sitemap entries
+  // Create sitemap entries for US-only business
   const sitemapEntries: MetadataRoute.Sitemap = []
   
-  // Add home pages for each country
-  countryCodes.forEach(code => {
-    sitemapEntries.push({
-      url: `${baseUrl}/${code}`,
-      lastModified: new Date(),
-      changeFrequency: 'daily',
-      priority: 1.0,
-    })
+  // Add homepage
+  sitemapEntries.push({
+    url: `${baseUrl}/us`,
+    lastModified: new Date(),
+    changeFrequency: 'daily',
+    priority: 1.0,
   })
-  
 
-  
-  // Add collection pages
-  collections.forEach(collection => {
-    countryCodes.forEach(code => {
-      sitemapEntries.push({
-        url: `${baseUrl}/${code}/collections/${collection.handle}`,
-        lastModified: new Date(),
-        changeFrequency: 'weekly',
-        priority: 0.7,
-      })
-    })
-  })
-  
-  // Add category pages
-  product_categories.forEach(category => {
-    countryCodes.forEach(code => {
-      sitemapEntries.push({
-        url: `${baseUrl}/${code}/categories/${category.handle}`,
-        lastModified: new Date(),
-        changeFrequency: 'weekly',
-        priority: 0.7,
-      })
-    })
+  // Add about us page
+  sitemapEntries.push({
+    url: `${baseUrl}/us/about-us`,
+    lastModified: new Date(),
+    changeFrequency: 'monthly',
+    priority: 0.8,
   })
 
   // Add service area pages
-  const serviceAreas = ['bronx', 'queens', 'brooklyn', 'manhattan']
+  const serviceAreas = [
+    { slug: 'bronx-ny', name: 'Bronx' },
+    { slug: 'queens-ny', name: 'Queens' },
+    { slug: 'brooklyn-ny', name: 'Brooklyn' },
+    { slug: 'manhattan-ny', name: 'Manhattan' }
+  ]
+  
   serviceAreas.forEach(area => {
-    countryCodes.forEach(code => {
-      sitemapEntries.push({
-        url: `${baseUrl}/${code}/service-area/${area}-ny`,
-        lastModified: new Date(),
-        changeFrequency: 'weekly',
-        priority: 0.9,
-      })
+    sitemapEntries.push({
+      url: `${baseUrl}/us/service-area/${area.slug}`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly',
+      priority: 0.9,
     })
   })
   
