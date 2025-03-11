@@ -22,12 +22,12 @@ function useLocalStorage<T>(key: string, initialValue: T): [T, (value: T) => voi
         const parsedItem = JSON.parse(item)
         setStoredValue(parsedItem)
       } else {
-        window.localStorage.setItem(key, JSON.stringify(storedValue))
+        window.localStorage.setItem(key, JSON.stringify(initialValue))
       }
     } catch (error) {
       console.error(error)
     }
-  }, []) // Only run once on mount to prevent hydration mismatch
+  }, [key, initialValue]) // Include key and initialValue to ensure proper updates
 
   // Return a wrapped version of useState's setter function that
   // persists the new value to localStorage

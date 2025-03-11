@@ -33,14 +33,9 @@ export const CityProvider: React.FC<{ children: React.ReactNode }> = ({
       openCitySelector()
     } else if (hasSelectedCity) {
       closeCitySelector()
+      setIsFirstVisit(false)
     }
-
-    return () => {
-      if (hasSelectedCity) {
-        setIsFirstVisit(false)
-      }
-    }
-  }, [selectedCityId, isFirstVisit]) // Dependencies needed for proper state management
+  }, [selectedCityId]) // Only depend on selectedCityId to prevent re-renders
 
   const setSelectedCity = (cityId: CityId) => {
     console.log('Setting selected city:', cityId)
