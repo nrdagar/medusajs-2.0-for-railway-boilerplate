@@ -10,5 +10,10 @@ export const contentType = 'image/svg+xml'
 
 export default function Image() {
   const imageData = readFileSync(join(process.cwd(), 'public', 'opengraph-image.svg'))
-  return imageData
+  return new Response(imageData, {
+    headers: {
+      'Content-Type': 'image/svg+xml',
+      'Cache-Control': 'public, max-age=31536000, immutable'
+    }
+  })
 }
