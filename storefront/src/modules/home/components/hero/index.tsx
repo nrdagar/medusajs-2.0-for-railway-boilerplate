@@ -4,6 +4,7 @@ import { Button, Heading } from "@medusajs/ui"
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
 import { STORE_NAME } from "@lib/constants"
 import Image from "next/image"
+import ZipCodeSearch from "@modules/common/components/zip-code-search"
 
 const Hero = () => {
   return (
@@ -36,6 +37,18 @@ const Hero = () => {
             Get the dumpster you need fast and at an affordable price! Serving Queens, Manhattan, Brooklyn, and Bronx with same-day delivery available.
           </p>
         </span>
+        
+        {/* Zip Code Search Box */}
+        <div className="w-full max-w-md px-4 mb-6">
+          <div className="bg-white/90 backdrop-blur-sm p-4 rounded-lg shadow-lg">
+            <h3 className="text-lg font-semibold text-gray-800 mb-3">Find Dumpster Rentals Near You</h3>
+            <ZipCodeSearch 
+              buttonText="Get Started" 
+              placeholder="Enter your ZIP code"
+            />
+          </div>
+        </div>
+        
         <div className="flex flex-col sm:flex-row gap-4 justify-center px-4">
           <Button variant="primary" size="large" className="bg-orange-500 hover:bg-orange-600 px-8 py-4 text-white font-medium shadow-lg hover:shadow-xl transition-all transform hover:scale-105" asChild>
             <a href="#services" onClick={(e) => {
