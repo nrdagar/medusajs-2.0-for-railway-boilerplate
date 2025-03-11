@@ -7,8 +7,17 @@ checkEnvVariables()
  */
 const nextConfig = {
   reactStrictMode: true,
-  experimental: {
-    runtime: 'edge',
+  images: {
+    remotePatterns: [
+      {
+        protocol: "http",
+        hostname: "localhost",
+      },
+      {
+        protocol: process.env.NEXT_PUBLIC_BASE_URL?.startsWith('https') ? 'https' : 'http',
+        hostname: process.env.NEXT_PUBLIC_BASE_URL?.replace(/^https?:\/\//, ''),
+      },
+    ],
   },
   eslint: {
     ignoreDuringBuilds: true,
