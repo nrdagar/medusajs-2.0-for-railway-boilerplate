@@ -18,7 +18,7 @@ export async function POST(req: NextRequest) {
               'Content-Type': 'application/x-www-form-urlencoded'
             },
             body: new URLSearchParams({
-              secret: process.env.RECAPTCHA_SECRET_KEY || "6LeIxAcTAAAAAGMx5LOXRGZgK12TmD-Qw4o1xGjI",
+              secret: process.env.RECAPTCHA_SECRET_KEY,
               response: captchaToken
             }).toString()
           }
