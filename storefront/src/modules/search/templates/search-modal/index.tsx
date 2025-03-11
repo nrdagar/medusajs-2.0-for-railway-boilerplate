@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation"
 import { MagnifyingGlassMini } from "@medusajs/icons"
 
 import { SEARCH_INDEX_NAME, searchClient } from "@lib/search-client"
-import Hit from "@modules/search/components/hit"
+import Hit from "@modules/search/components/hit/index"
 import Hits from "@modules/search/components/hits"
 import SearchBox from "@modules/search/components/search-box"
 import { useEffect, useRef } from "react"

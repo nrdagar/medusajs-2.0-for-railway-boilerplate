@@ -6,19 +6,14 @@ import {
   useSearchBox,
 } from "react-instantsearch-hooks-web"
 
-import { ProductHit } from "../hit"
-import ShowAll from "../show-all"
+import Hit from "../hit"
 
-type HitsProps<THit> = React.ComponentProps<"div"> &
-  UseHitsProps & {
-    hitComponent: (props: { hit: THit }) => JSX.Element
-  }
+type HitsProps = React.ComponentProps<"div"> & UseHitsProps
 
 const Hits = ({
-  hitComponent: Hit,
   className,
   ...props
-}: HitsProps<ProductHit>) => {
+}: HitsProps) => {
   const { query } = useSearchBox()
   const { hits } = useHits(props)
 
@@ -34,21 +29,15 @@ const Hits = ({
       )}
     >
       <div
-        className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-4"
+        className="grid grid-cols-1 gap-4 mb-4"
         data-testid="search-results"
       >
         {hits.slice(0, 6).map((hit, index) => (
-          <li
-            key={index}
-            className={clx("list-none", {
-              "hidden sm:block": index > 2,
-            })}
-          >
-            <Hit hit={hit as unknown as ProductHit} />
+          <li key={index} className="list-none">
+            <Hit hit={hit} />
           </li>
         ))}
       </div>
-      <ShowAll />
     </div>
   )
 }
