@@ -6,19 +6,9 @@ import { listRegions } from "@lib/data/regions"
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://jbsdumpster.com'
   
-  // Get all regions
-  const regions = await listRegions()
-  const countryCodes = regions
-    ?.map((r) => r.countries?.map((c) => c.iso_2))
-    .flat()
-    .filter(Boolean) as string[]
-  
-  if (!countryCodes || countryCodes.length === 0) {
-    return []
-  }
-  
-  // Use first country code for fetching data
-  const countryCode = countryCodes[0]
+  // Only use US region since this is a US-only business
+  const countryCode = 'us'
+  const countryCodes = [countryCode]
   
   // Get collections and categories
   const { collections } = await getCollectionsList()
@@ -59,6 +49,19 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         lastModified: new Date(),
         changeFrequency: 'weekly',
         priority: 0.7,
+      })
+    })
+  })
+
+  // Add service area pages
+  const serviceAreas = ['bronx', 'queens', 'brooklyn', 'manhattan']
+  serviceAreas.forEach(area => {
+    countryCodes.forEach(code => {
+      sitemapEntries.push({
+        url: `${baseUrl}/${code}/service-area/${area}-ny`,
+        lastModified: new Date(),
+        changeFrequency: 'weekly',
+        priority: 0.9,
       })
     })
   })
