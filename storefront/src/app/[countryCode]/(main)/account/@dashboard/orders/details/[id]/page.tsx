@@ -33,8 +33,18 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 
   return {
-    title: `Order #${order.display_id}`,
-    description: `View your order`,
+    title: `Order #${order.display_id} | JBS Builder Lic`,
+    description: `View details and status for your dumpster rental order #${order.display_id}`,
+    robots: {
+      index: false,
+      follow: false,
+    },
+    openGraph: {
+      title: `Order #${order.display_id} | JBS Builder Lic`,
+      description: `View details and status for your dumpster rental order #${order.display_id}`,
+      type: "website",
+      robots: "noindex,nofollow"
+    }
   }
 }
 
