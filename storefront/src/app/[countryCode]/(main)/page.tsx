@@ -9,6 +9,7 @@ import UseCases from "@modules/home/components/use-cases"
 import ServiceAreas from "@modules/home/components/service-areas"
 import WhyChooseUs from "@modules/home/components/why-choose-us"
 import CallToAction from "@modules/home/components/call-to-action"
+import CitySelector from "@modules/common/components/city-selector"
 
 export const metadata: Metadata = {
   title: `${STORE_NAME} - NYC Dumpster Rental Services | Queens, Brooklyn, Manhattan, Bronx`,
@@ -75,6 +76,7 @@ export default function Home() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
       />
       
+      <CitySelector />
       <Hero />
       <Services />
       <UseCases />
