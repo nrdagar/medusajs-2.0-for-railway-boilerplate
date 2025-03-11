@@ -3,6 +3,7 @@ import { notFound } from "next/navigation"
 import { CITIES } from "@lib/config/cities"
 import ServiceAreaTemplate from "@modules/service-area/templates"
 import { STORE_NAME } from "@lib/constants"
+import { Suspense } from "react"
 
 type Props = {
   params: { citySlug: string; countryCode: string }
@@ -44,5 +45,9 @@ export default function ServiceAreaPage({ params }: Props) {
     notFound()
   }
 
-  return <ServiceAreaTemplate city={city} />
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <ServiceAreaTemplate city={city} />
+    </Suspense>
+  )
 }
