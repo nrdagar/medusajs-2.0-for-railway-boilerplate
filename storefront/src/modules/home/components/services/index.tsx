@@ -125,21 +125,22 @@ const Services = () => {
                 {/* Dumpster Image with Dimensions */}
                 <div className="p-6 flex justify-center relative">
                   <Image 
-                    src={service.image} 
+                    src={`/images/dumpster.jpg`}
                     alt={service.title} 
                     width={280}
                     height={160}
                     className="object-contain"
+                    priority
                   />
                   
                   {/* Dimensions */}
-                  <div className="absolute top-2 left-2 text-sm font-medium text-gray-700 bg-white/80 px-2 py-0.5 rounded">
+                  <div className="absolute top-2 left-2 text-sm font-bold text-gray-800 bg-white/90 px-2 py-1 rounded shadow-sm">
                     {service.dimensions.height}
                   </div>
-                  <div className="absolute bottom-2 left-2 text-sm font-medium text-gray-700 bg-white/80 px-2 py-0.5 rounded">
+                  <div className="absolute bottom-2 left-2 text-sm font-bold text-gray-800 bg-white/90 px-2 py-1 rounded shadow-sm">
                     {service.dimensions.length}
                   </div>
-                  <div className="absolute bottom-2 right-2 text-sm font-medium text-gray-700 bg-white/80 px-2 py-0.5 rounded">
+                  <div className="absolute bottom-2 right-2 text-sm font-bold text-gray-800 bg-white/90 px-2 py-1 rounded shadow-sm">
                     {service.dimensions.width}
                   </div>
                 </div>
@@ -147,10 +148,10 @@ const Services = () => {
                 {/* Best For Section */}
                 <div className="px-6 pb-6 flex-grow">
                   <h4 className="font-bold text-gray-800 mb-3">{service.description}</h4>
-                  <ul className="space-y-2">
+                  <ul className="space-y-3">
                     {service.details.map((detail, index) => (
-                      <li key={index} className="flex items-start text-gray-600">
-                        <span className="mr-2 text-gray-400">•</span>
+                      <li key={index} className="flex items-start text-gray-700">
+                        <span className="mr-2.5 text-orange-500 text-lg">•</span>
                         {detail}
                       </li>
                     ))}
@@ -170,7 +171,7 @@ const Services = () => {
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-6 h-6">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                 </svg>
-                <span className="text-lg font-bold tracking-wide">678-233-1434</span>
+                <span className="text-lg font-bold tracking-wide">(516) 515-1951</span>
               </a>
               <Button 
                 variant="secondary" 
