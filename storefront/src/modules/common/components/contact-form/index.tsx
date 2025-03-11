@@ -143,7 +143,7 @@ const ContactForm = ({ inFooter = false }: ContactFormProps) => {
               <Button 
                 type="submit" 
                 isLoading={isSubmitting}
-                className={`${inFooter ? "bg-grey-90 hover:bg-grey-80 text-white px-8 py-3" : "bg-orange-500 hover:bg-orange-600 text-white px-10 py-4 text-lg font-medium shadow-md hover:shadow-lg transform hover:scale-[1.02]"} rounded-lg transition-all`}
+                className={`${inFooter ? "bg-orange-600 hover:bg-orange-700 text-white px-8 py-3 font-semibold shadow-md hover:shadow-lg transform hover:translate-y-[-2px]" : "bg-orange-600 hover:bg-orange-700 text-white px-10 py-4 text-lg font-medium shadow-md hover:shadow-lg transform hover:scale-[1.02]"} rounded-lg transition-all`}
               >
                 Send Message
               </Button>

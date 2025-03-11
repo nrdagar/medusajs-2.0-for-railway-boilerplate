@@ -28,13 +28,13 @@ const UseCases = () => {
           </Text>
         </div>
         
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-6 px-4 sm:px-0">
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-6 sm:gap-8 px-4 sm:px-0">
           {cases.map((useCase) => (
-            <div key={useCase.id} className="flex flex-col items-center p-5 sm:p-6 bg-white rounded-xl shadow-md hover:shadow-xl transition-all transform hover:scale-[1.05] border border-grey-10">
-              <div className="w-16 h-16 mb-4 sm:mb-5 bg-orange-500 rounded-full flex items-center justify-center">
-                <Image src={useCase.icon} width={32} height={32} alt={useCase.title} />
+            <div key={useCase.id} className="flex flex-col items-center p-6 sm:p-8 bg-white rounded-lg shadow-md hover:shadow-xl transition-all transform hover:translate-y-[-5px] border border-grey-20">
+              <div className="w-18 h-18 mb-5 sm:mb-6 bg-orange-600 rounded-lg flex items-center justify-center shadow-lg">
+                <Image src={useCase.icon} width={36} height={36} alt={useCase.title} className="text-white" />
               </div>
-              <Heading level="h3" className="text-center text-grey-90 text-base sm:text-lg font-medium">
+              <Heading level="h3" className="text-center text-grey-90 text-base sm:text-lg font-semibold">
                 {useCase.title}
               </Heading>
             </div>

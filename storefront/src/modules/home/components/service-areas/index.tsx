@@ -21,12 +21,12 @@ const ServiceAreas = () => {
           </Text>
         </div>
         
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 px-4 sm:px-0">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-10 px-4 sm:px-0">
           {areas.map((area) => (
-            <div key={area.id} className="flex flex-col p-6 sm:p-8 bg-white rounded-xl shadow-md hover:shadow-xl transition-all transform hover:scale-[1.02] border-t-4 border-orange-500">
-              <div className="flex items-center mb-4">
-                <div className="w-12 h-12 mr-4 bg-grey-5 rounded-full flex items-center justify-center">
-                  <Image src={area.icon} width={32} height={32} alt={area.name} />
+            <div key={area.id} className="flex flex-col p-8 sm:p-10 bg-white rounded-lg shadow-lg hover:shadow-xl transition-all transform hover:translate-y-[-5px] border-t-4 border-orange-600">
+              <div className="flex items-center mb-6">
+                <div className="w-14 h-14 mr-5 bg-orange-100 rounded-lg flex items-center justify-center shadow-md">
+                  <Image src={area.icon} width={36} height={36} alt={area.name} className="text-orange-600" />
                 </div>
                 <Heading level="h3" className="text-2xl sm:text-3xl font-bold text-grey-90">
                   {area.name}
