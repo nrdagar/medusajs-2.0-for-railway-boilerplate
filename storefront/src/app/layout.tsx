@@ -1,8 +1,8 @@
-import { getBaseURL } from "../lib/util/env"
+import { getBaseURL } from "@lib/util/env"
 import { Metadata } from "next"
-import { STORE_NAME } from "../lib/constants"
+import { STORE_NAME } from "@lib/constants"
 import "styles/globals.css"
-import { CityProvider } from "../lib/context/city-context"
+import { CityProvider } from "@lib/context/city-context"
 
 export const metadata: Metadata = {
   metadataBase: new URL(getBaseURL()),
