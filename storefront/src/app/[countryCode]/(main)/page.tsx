@@ -1,15 +1,15 @@
 import { Metadata } from "next"
 import Script from "next/script"
-import { STORE_NAME } from "@lib/constants"
-import { createLocalBusinessSchema, createOrganizationSchema } from "@lib/util/structured-data"
+import { STORE_NAME } from "../../../lib/constants"
+import { createLocalBusinessSchema, createOrganizationSchema } from "../../../lib/util/structured-data"
 
-import Hero from "@modules/home/components/hero"
-import Services from "@modules/home/components/services"
-import UseCases from "@modules/home/components/use-cases"
-import ServiceAreas from "@modules/home/components/service-areas"
-import WhyChooseUs from "@modules/home/components/why-choose-us"
-import CallToAction from "@modules/home/components/call-to-action"
-import CitySelector from "@modules/common/components/city-selector"
+import Hero from "../../../modules/home/components/hero"
+import Services from "../../../modules/home/components/services"
+import UseCases from "../../../modules/home/components/use-cases"
+import ServiceAreas from "../../../modules/home/components/service-areas"
+import WhyChooseUs from "../../../modules/home/components/why-choose-us"
+import CallToAction from "../../../modules/home/components/call-to-action"
+import CitySelector from "../../../modules/common/components/city-selector"
 
 export const metadata: Metadata = {
   title: `${STORE_NAME} - NYC Dumpster Rental Services | Queens, Brooklyn, Manhattan, Bronx`,
