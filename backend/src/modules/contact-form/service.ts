@@ -15,8 +15,8 @@ export default class ContactFormService {
   protected readonly entityManager_: EntityManager
   protected readonly logger_: Logger
 
-  constructor({ entityManager, logger }) {
-    this.entityManager_ = entityManager
+  constructor({ manager, logger }) {
+    this.entityManager_ = manager
     this.logger_ = logger
   }
 
