@@ -38,10 +38,8 @@ export const CityProvider: React.FC<{ children: React.ReactNode }> = ({
   }, [selectedCityId]) // Only depend on selectedCityId to prevent re-renders
 
   const setSelectedCity = (cityId: CityId) => {
-    console.log('Setting selected city:', cityId)
     setSelectedCityId(cityId)
     if (isFirstVisit) {
-      console.log('Setting first visit to false after city selection')
       setIsFirstVisit(false)
     }
     closeCitySelector()
