@@ -1,6 +1,5 @@
-import { ImageResponse } from 'next/server'
+import { ImageResponse } from '@vercel/og'
 import { STORE_NAME } from "../lib/constants"
-import React from 'react'
  
 export const runtime = 'edge'
 export const alt = "JBS Builder Lic Dumpster Rental Services - NYC's Premier Waste Management Solution"
@@ -25,15 +24,7 @@ export default async function Image() {
           padding: '40px',
         }}
       >
-        <img
-          src="/images/dumpster.jpg"
-          alt="Dumpster"
-          style={{
-            width: '60%',
-            height: 'auto',
-            marginBottom: '40px',
-          }}
-        />
+
         <div style={{ textAlign: 'center', color: '#1a1a1a', marginBottom: '20px' }}>
           {STORE_NAME}
         </div>
@@ -42,8 +33,6 @@ export default async function Image() {
         </div>
       </div>
     ),
-    {
-      ...size,
-    }
+    size
   )
 }
