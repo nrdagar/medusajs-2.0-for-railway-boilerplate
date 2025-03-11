@@ -68,9 +68,9 @@ const Services = () => {
         
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-8 sm:gap-10 xl:gap-12 px-4 sm:px-6 lg:px-8">
           {services.map((service) => (
-            <div key={service.id} className="flex flex-col bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:translate-y-[-5px] border border-grey-20 hover:border-orange-600/30">
-              <div className="h-52 sm:h-60 bg-grey-5 flex items-center justify-center relative overflow-hidden">
-                <div className="absolute top-4 right-4 z-10 bg-orange-600 text-white px-4 py-1.5 rounded-md text-sm font-bold shadow-md">
+            <div key={service.id} className="flex flex-col bg-white rounded-lg overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:translate-y-[-5px] border-t-4 border-orange-600">
+              <div className="h-56 sm:h-64 bg-grey-5 flex items-center justify-center relative overflow-hidden">
+                <div className="absolute top-4 right-4 z-10 bg-orange-600 text-white px-5 py-2 rounded-md text-sm font-bold shadow-lg">
                   {service.id.split('-')[0]} YD
                 </div>
                 <Image 
@@ -78,7 +78,7 @@ const Services = () => {
                   alt={service.title} 
                   fill 
                   sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, (max-width: 1280px) 33vw, 20vw"
-                  className="object-cover hover:scale-110 transition-transform duration-700"
+                  className="object-cover hover:scale-110 transition-transform duration-700 brightness-[0.95]"
                 />
               </div>
               <div className="p-6 sm:p-8 flex-grow flex flex-col">
