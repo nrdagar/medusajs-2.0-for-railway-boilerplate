@@ -11,7 +11,7 @@ export async function POST(req: NextRequest) {
     if (captchaToken) {
       try {
         const recaptchaResponse = await fetch(
-          `https://www.google.com/recaptcha/api/siteverify?secret=6LcUi_EqAAAAAGxXDylQU23L7_wbZ_HJ4RO4ljX6&response=${captchaToken}`,
+          `https://www.google.com/recaptcha/api/siteverify?secret=${process.env.RECAPTCHA_SECRET_KEY}&response=${captchaToken}`,
           { method: 'POST' }
         )
         
