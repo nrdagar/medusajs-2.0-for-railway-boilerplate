@@ -1,7 +1,4 @@
 import { MetadataRoute } from 'next'
-import { getProductsList } from "@lib/data/products"
-import { getCollectionsList } from "@lib/data/collections"
-import { getCategoriesList } from "@lib/data/categories"
 import { listRegions } from "@lib/data/regions"
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
@@ -18,14 +15,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     return []
   }
   
-  // Use first country code for fetching data
-  const countryCode = countryCodes[0]
-  
-  // Get products, collections, and categories
-  const { response: productsResponse } = await getProductsList({ countryCode })
-  const { collections } = await getCollectionsList()
-  const { product_categories } = await getCategoriesList()
-  
   // Create sitemap entries
   const sitemapEntries: MetadataRoute.Sitemap = []
   
@@ -39,38 +28,21 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     })
   })
   
-  // Add product pages
-  productsResponse.products.forEach(product => {
-    countryCodes.forEach(code => {
-      sitemapEntries.push({
-        url: `${baseUrl}/${code}/products/${product.handle}`,
-        lastModified: new Date(product.updated_at),
-        changeFrequency: 'weekly',
-        priority: 0.8,
-      })
-    })
-  })
+  // Add service area pages
+  const boroughs = [
+    { name: 'queens', zip: '11354' },
+    { name: 'brooklyn', zip: '11201' },
+    { name: 'manhattan', zip: '10001' },
+    { name: 'bronx', zip: '10451' }
+  ]
   
-  // Add collection pages
-  collections.forEach(collection => {
+  boroughs.forEach(borough => {
     countryCodes.forEach(code => {
       sitemapEntries.push({
-        url: `${baseUrl}/${code}/collections/${collection.handle}`,
+        url: `${baseUrl}/${code}?location=${borough.zip}`,
         lastModified: new Date(),
         changeFrequency: 'weekly',
-        priority: 0.7,
-      })
-    })
-  })
-  
-  // Add category pages
-  product_categories.forEach(category => {
-    countryCodes.forEach(code => {
-      sitemapEntries.push({
-        url: `${baseUrl}/${code}/categories/${category.handle}`,
-        lastModified: new Date(),
-        changeFrequency: 'weekly',
-        priority: 0.7,
+        priority: 0.9,
       })
     })
   })
