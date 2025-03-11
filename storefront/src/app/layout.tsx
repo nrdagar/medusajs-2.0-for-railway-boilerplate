@@ -6,6 +6,7 @@ import { STORE_NAME } from "@lib/constants"
 import Script from "next/script"
 import { createOrganizationSchema, createLocalBusinessSchema, createFAQSchema } from "@lib/util/structured-data"
 import GoogleAnalytics from "@lib/components/google-analytics"
+import { Suspense } from "react"
 
 export const metadata: Metadata = {
   metadataBase: new URL(getBaseURL()),
@@ -40,7 +41,9 @@ export default function RootLayout(props: { children: React.ReactNode }) {
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(createFAQSchema()) }}
         />
-        <GoogleAnalytics />
+        <Suspense>
+          <GoogleAnalytics />
+        </Suspense>
       </body>
     </html>
   )
