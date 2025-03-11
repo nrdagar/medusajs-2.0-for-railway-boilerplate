@@ -7,7 +7,8 @@ checkEnvVariables()
  */
 const nextConfig = {
   reactStrictMode: true,
-
+  output: 'standalone',
+  assetPrefix: process.env.NEXT_PUBLIC_BASE_URL,
   images: {
     remotePatterns: [
       {
@@ -20,6 +21,7 @@ const nextConfig = {
       },
     ],
   },
+
   eslint: {
     ignoreDuringBuilds: true,
   },
