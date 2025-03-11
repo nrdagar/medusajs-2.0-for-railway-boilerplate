@@ -14,22 +14,34 @@ export const metadata: Metadata = {
   title: `${STORE_NAME} - NYC Dumpster Rental Services | Queens, Brooklyn, Manhattan, Bronx`,
   description: "Top-rated dumpster rental in NYC. 10-40 yard dumpsters for construction, demolition, renovation & cleanouts. Same-day delivery in Queens, Brooklyn, Manhattan & Bronx. HOA-friendly service.",
   keywords: [
-    "dumpster rental NYC",
+    // Borough-specific keywords
+    "dumpster rental Queens NY 11354",
+    "dumpster rental Brooklyn NY 11201",
+    "dumpster rental Manhattan NY 10001",
+    "dumpster rental Bronx NY 10451",
     "roll off dumpster Queens",
     "construction dumpster Brooklyn",
     "waste container rental Manhattan",
     "debris removal Bronx",
-    "10 yard dumpster rental",
-    "20 yard dumpster rental",
-    "30 yard dumpster rental",
-    "40 yard dumpster rental",
-    "residential dumpster rental",
-    "commercial dumpster rental",
-    "construction waste removal",
-    "demolition dumpster rental",
-    "renovation waste container",
-    "HOA friendly dumpster service",
-    "same day dumpster delivery NYC"
+    // Size-specific keywords
+    "10 yard dumpster rental NYC",
+    "20 yard dumpster rental NYC",
+    "30 yard dumpster rental NYC",
+    "40 yard dumpster rental NYC",
+    // Service-specific keywords
+    "residential dumpster rental NYC",
+    "commercial dumpster rental NYC",
+    "construction waste removal NYC",
+    "demolition dumpster rental NYC",
+    "renovation waste container NYC",
+    "basement cleanout dumpster NYC",
+    "garage cleanout dumpster NYC",
+    "roofing debris removal NYC",
+    // Features and benefits
+    "same day dumpster delivery NYC",
+    "affordable dumpster rental NYC",
+    "HOA friendly dumpster service NYC",
+    "local dumpster rental company NYC"
   ],
   alternates: {
     canonical: "/",

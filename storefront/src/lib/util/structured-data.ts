@@ -18,7 +18,32 @@ export const createOrganizationSchema = () => {
       "@type": "ContactPoint",
       "telephone": "(516) 515-1951",
       "contactType": "customer service",
-      "areaServed": ["Queens", "Manhattan", "Brooklyn", "Bronx"],
+      "areaServed": {
+        "@type": "City",
+        "name": "New York City",
+        "containsPlace": [
+          {
+            "@type": "Borough",
+            "name": "Queens",
+            "postalCode": ["11361", "11362", "11363", "11364", "11354", "11355", "11356", "11357", "11358", "11359", "11360"]
+          },
+          {
+            "@type": "Borough",
+            "name": "Manhattan",
+            "postalCode": ["10001", "10002", "10003", "10004", "10005", "10006", "10007", "10009", "10010", "10011", "10012"]
+          },
+          {
+            "@type": "Borough",
+            "name": "Brooklyn",
+            "postalCode": ["11201", "11203", "11204", "11205", "11206", "11207", "11208", "11209", "11210", "11211", "11212"]
+          },
+          {
+            "@type": "Borough",
+            "name": "Bronx",
+            "postalCode": ["10451", "10452", "10453", "10454", "10455", "10456", "10457", "10458", "10459", "10460", "10461"]
+          }
+        ]
+      },
       "availableLanguage": "English"
     },
     "address": {
@@ -52,19 +77,23 @@ export const createServiceSchema = (service: DumpsterService) => {
       "containsPlace": [
         {
           "@type": "Borough",
-          "name": "Queens"
+          "name": "Queens",
+          "postalCode": ["11361", "11362", "11363", "11364", "11354", "11355", "11356", "11357", "11358", "11359", "11360"]
         },
         {
           "@type": "Borough",
-          "name": "Manhattan"
+          "name": "Manhattan",
+          "postalCode": ["10001", "10002", "10003", "10004", "10005", "10006", "10007", "10009", "10010", "10011", "10012"]
         },
         {
           "@type": "Borough",
-          "name": "Brooklyn"
+          "name": "Brooklyn",
+          "postalCode": ["11201", "11203", "11204", "11205", "11206", "11207", "11208", "11209", "11210", "11211", "11212"]
         },
         {
           "@type": "Borough",
-          "name": "Bronx"
+          "name": "Bronx",
+          "postalCode": ["10451", "10452", "10453", "10454", "10455", "10456", "10457", "10458", "10459", "10460", "10461"]
         }
       ]
     },
@@ -87,11 +116,37 @@ export const createLocalBusinessSchema = () => {
     "telephone": "(516) 515-1951",
     "address": {
       "@type": "PostalAddress",
-      "streetAddress": "123 Main St", // Replace with actual address
+      "streetAddress": "123 Main St",
       "addressLocality": "New York",
       "addressRegion": "NY",
-      "postalCode": "10001", // Replace with actual postal code
+      "postalCode": "11354",
       "addressCountry": "US"
+    },
+    "areaServed": {
+      "@type": "City",
+      "name": "New York City",
+      "containsPlace": [
+        {
+          "@type": "Borough",
+          "name": "Queens",
+          "postalCode": ["11361", "11362", "11363", "11364", "11354", "11355", "11356", "11357", "11358", "11359", "11360"]
+        },
+        {
+          "@type": "Borough",
+          "name": "Manhattan",
+          "postalCode": ["10001", "10002", "10003", "10004", "10005", "10006", "10007", "10009", "10010", "10011", "10012"]
+        },
+        {
+          "@type": "Borough",
+          "name": "Brooklyn",
+          "postalCode": ["11201", "11203", "11204", "11205", "11206", "11207", "11208", "11209", "11210", "11211", "11212"]
+        },
+        {
+          "@type": "Borough",
+          "name": "Bronx",
+          "postalCode": ["10451", "10452", "10453", "10454", "10455", "10456", "10457", "10458", "10459", "10460", "10461"]
+        }
+      ]
     },
     "geo": {
       "@type": "GeoCoordinates",
