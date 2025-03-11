@@ -37,7 +37,31 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       description: city.metaDescription,
       url: `${process.env.NEXT_PUBLIC_BASE_URL || 'https://jbsdumpster.com'}/service-area/${city.slug}`,
       type: "website",
+      locale: "en_US",
+      siteName: STORE_NAME,
+      images: [
+        {
+          url: `${process.env.NEXT_PUBLIC_BASE_URL || 'https://jbsdumpster.com'}/images/og-image.jpg`,
+          width: 1200,
+          height: 630,
+          alt: `Dumpster Rental Services in ${city.fullName}`,
+        },
+      ],
     },
+    twitter: {
+      card: "summary_large_image",
+      title: `Dumpster Rental in ${city.fullName} | ${STORE_NAME}`,
+      description: city.metaDescription,
+      images: [`${process.env.NEXT_PUBLIC_BASE_URL || 'https://jbsdumpster.com'}/images/og-image.jpg`],
+    },
+    keywords: [
+      `dumpster rental ${city.fullName}`,
+      `${city.fullName} waste management`,
+      `construction dumpster ${city.fullName}`,
+      `roll off dumpster ${city.fullName}`,
+      `${city.fullName} junk removal`,
+      `affordable dumpster rental ${city.fullName}`,
+    ],
   }
 }
 
