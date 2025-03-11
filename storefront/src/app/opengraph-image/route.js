@@ -1,14 +1,34 @@
-export async function GET() {
-  const svg = `<svg width="1200" height="630" xmlns="http://www.w3.org/2000/svg">
-    <rect width="100%" height="100%" fill="white"/>
-    <text x="50%" y="40%" text-anchor="middle" font-family="Arial" font-size="48" fill="#1a1a1a">JBS Builder Lic</text>
-    <text x="50%" y="60%" text-anchor="middle" font-family="Arial" font-size="24" fill="#666">NYC's Premier Dumpster Rental Service</text>
-  </svg>`
+import { ImageResponse } from 'next/server'
 
-  return new Response(svg, {
-    headers: {
-      'Content-Type': 'image/svg+xml',
-      'Cache-Control': 'public, max-age=31536000, immutable'
+export const runtime = 'edge'
+
+export async function GET() {
+  return new ImageResponse(
+    (
+      <div
+        style={{
+          fontSize: 48,
+          background: 'white',
+          width: '100%',
+          height: '100%',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          flexDirection: 'column',
+          padding: '40px',
+        }}
+      >
+        <div style={{ textAlign: 'center', color: '#1a1a1a', marginBottom: '20px' }}>
+          JBS Builder Lic
+        </div>
+        <div style={{ fontSize: '24px', color: '#666', textAlign: 'center' }}>
+          NYC's Premier Dumpster Rental Service
+        </div>
+      </div>
+    ),
+    {
+      width: 1200,
+      height: 630,
     }
-  })
+  )
 }
