@@ -114,12 +114,12 @@ const Services = () => {
         
         <div className="relative">
           {/* Dumpster Size Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6 px-4 max-w-[1400px] mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-8 px-4 max-w-[1400px] mx-auto">
             {services.map((service) => (
-              <div key={service.id} className="flex flex-col bg-white border border-gray-200 overflow-hidden">
+              <div key={service.id} className="flex flex-col bg-white border border-gray-200 overflow-hidden shadow-md hover:shadow-lg transition-shadow">
                 {/* Header */}
-                <div className="bg-gray-900 text-white p-3 text-center">
-                  <h3 className="text-lg font-bold">{service.title}</h3>
+                <div className="bg-gray-900 text-white p-3.5 text-center">
+                  <h3 className="text-lg font-bold tracking-wide">{service.title}</h3>
                 </div>
                 
                 {/* Dumpster Image with Dimensions */}
@@ -134,13 +134,13 @@ const Services = () => {
                   />
                   
                   {/* Dimensions */}
-                  <div className="absolute top-2 left-2 text-sm font-bold text-gray-800 bg-white/90 px-2 py-1 rounded shadow-sm">
+                  <div className="absolute top-2 left-2 text-sm font-bold text-gray-900 bg-white/95 px-2.5 py-1.5 rounded-md shadow-md">
                     {service.dimensions.height}
                   </div>
-                  <div className="absolute bottom-2 left-2 text-sm font-bold text-gray-800 bg-white/90 px-2 py-1 rounded shadow-sm">
+                  <div className="absolute bottom-2 left-2 text-sm font-bold text-gray-900 bg-white/95 px-2.5 py-1.5 rounded-md shadow-md">
                     {service.dimensions.length}
                   </div>
-                  <div className="absolute bottom-2 right-2 text-sm font-bold text-gray-800 bg-white/90 px-2 py-1 rounded shadow-sm">
+                  <div className="absolute bottom-2 right-2 text-sm font-bold text-gray-900 bg-white/95 px-2.5 py-1.5 rounded-md shadow-md">
                     {service.dimensions.width}
                   </div>
                 </div>
@@ -163,28 +163,16 @@ const Services = () => {
           
           {/* Call to Action Buttons */}
           <div className="mt-12 max-w-[1400px] mx-auto">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 px-4">
+            <div className="flex justify-center px-4">
               <a 
                 href="tel:5165151951" 
-                className="bg-orange-500 hover:bg-orange-600 text-white text-center py-5 rounded-lg flex items-center justify-center gap-3 shadow-lg hover:shadow-xl transition-all transform hover:scale-[1.02]"
+                className="bg-orange-500 hover:bg-orange-600 text-white text-center py-6 px-12 rounded-lg flex items-center justify-center gap-4 shadow-lg hover:shadow-xl transition-all transform hover:scale-[1.02]"
               >
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-6 h-6">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-7 h-7">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                 </svg>
-                <span className="text-lg font-bold tracking-wide">(516) 515-1951</span>
+                <span className="text-xl font-bold tracking-wide">(516) 515-1951</span>
               </a>
-              <Button 
-                variant="secondary" 
-                className="bg-teal-600 hover:bg-teal-700 text-white py-5 rounded-lg flex items-center justify-center gap-3 shadow-lg hover:shadow-xl transition-all transform hover:scale-[1.02]" 
-                onClick={() => {
-                  openPhonePopup()
-                }}
-              >
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-6 h-6">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
-                </svg>
-                <span className="text-lg font-bold tracking-wide">Order Online</span>
-              </Button>
             </div>
             
             {/* Disclaimer */}
