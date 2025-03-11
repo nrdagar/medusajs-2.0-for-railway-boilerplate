@@ -8,32 +8,32 @@ import ZipCodeSearch from "@modules/common/components/zip-code-search"
 
 const Hero = () => {
   return (
-    <div className="h-[75vh] w-full border-b border-ui-border-base relative">
+    <div className="h-[80vh] w-full border-b border-ui-border-base relative">
       <div className="absolute inset-0 z-0">
         <Image 
           src="/images/dumpster.jpg" 
           alt="Dumpster rental service" 
           fill 
           sizes="100vw"
-          className="object-cover brightness-[0.75]"
+          className="object-cover brightness-[0.7]"
           priority
         />
       </div>
-      <div className="absolute inset-0 z-10 flex flex-col justify-center items-center text-center small:p-32 gap-6 bg-gradient-to-br from-black/80 via-black/60 to-transparent">
-        <span className="max-w-4xl px-4">
+      <div className="absolute inset-0 z-10 flex flex-col justify-center items-center text-center small:p-32 gap-6 bg-gradient-to-br from-black/90 via-black/70 to-black/30">
+        <span className="max-w-5xl px-4">
           <Heading
             level="h1"
-            className="text-4xl sm:text-5xl lg:text-6xl leading-tight text-white font-bold mb-4 drop-shadow-lg"
+            className="text-4xl sm:text-5xl lg:text-7xl leading-tight text-white font-extrabold mb-4 drop-shadow-xl"
           >
             JBS Builder Lic Dumpster Rental Services
           </Heading>
           <Heading
             level="h2"
-            className="text-2xl sm:text-3xl lg:text-4xl leading-snug text-white/90 font-normal mb-6 drop-shadow-lg"
+            className="text-2xl sm:text-3xl lg:text-4xl leading-snug text-white/90 font-medium mb-6 drop-shadow-xl"
           >
             Fast, Reliable, and Convenient Waste Management Solutions in NYC
           </Heading>
-          <p className="text-lg sm:text-xl text-white/80 mb-8 max-w-2xl mx-auto drop-shadow-lg">
+          <p className="text-lg sm:text-xl text-white/90 mb-8 max-w-3xl mx-auto drop-shadow-xl">
             Get the dumpster you need fast and at an affordable price! Serving Queens, Manhattan, Brooklyn, and Bronx with same-day delivery available.
           </p>
         </span>
