@@ -7,6 +7,9 @@ checkEnvVariables()
  */
 const nextConfig = {
   reactStrictMode: true,
+  experimental: {
+    runtime: 'edge',
+  },
   eslint: {
     ignoreDuringBuilds: true,
   },
