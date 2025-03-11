@@ -12,3 +12,10 @@ Allow: /*/collections/
 
 # Sitemap location
 Sitemap: https://jbsdumpster.com/sitemap.xml
+
+# Crawl delay to prevent server overload
+Crawl-delay: 5
+
+# Additional directives for specific bots
+User-agent: Googlebot
+Allow: /
