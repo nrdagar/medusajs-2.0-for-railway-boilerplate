@@ -1,7 +1,7 @@
 import { Metadata } from "next"
 import Script from "next/script"
 import { STORE_NAME } from "@lib/constants"
-import { createLocalBusinessSchema, createOrganizationSchema } from "@lib/util/structured-data"
+import { createLocalBusinessSchema, createOrganizationSchema, createFAQSchema, createAggregateRatingSchema, createBreadcrumbSchema } from "@lib/util/structured-data"
 
 import Hero from "@modules/home/components/hero"
 import Services from "@modules/home/components/services"
