@@ -14,17 +14,20 @@ function useLocalStorage<T>(key: string, initialValue: T): [T, (value: T) => voi
 
   // After hydration, sync with localStorage
   useEffect(() => {
+    if (typeof window === 'undefined') return;
+
     try {
       const item = window.localStorage.getItem(key)
       if (item) {
-        setStoredValue(JSON.parse(item))
+        const parsedItem = JSON.parse(item)
+        setStoredValue(parsedItem)
       } else {
-        window.localStorage.setItem(key, JSON.stringify(initialValue))
+        window.localStorage.setItem(key, JSON.stringify(storedValue))
       }
     } catch (error) {
       console.error(error)
     }
-  }, [key, initialValue])
+  }, []) // Only run once on mount to prevent hydration mismatch
 
   // Return a wrapped version of useState's setter function that
   // persists the new value to localStorage

@@ -24,19 +24,23 @@ export const CityProvider: React.FC<{ children: React.ReactNode }> = ({
   const [isFirstVisit, setIsFirstVisit] = useLocalStorage<boolean>("isFirstVisit", true)
   const [showCitySelector, openCitySelector, closeCitySelector] = useToggleState(false)
   
-  // Show city selector only on first visit
+  // Show city selector only on first visit and after hydration
   useEffect(() => {
-    if (isFirstVisit && !showCitySelector) {
-      openCitySelector()
-    }
-  }, [isFirstVisit]) // Only depend on isFirstVisit to prevent re-opening on every render
+    if (typeof window === 'undefined') return;
 
-  // Update first visit status when a city is selected
-  useEffect(() => {
-    if (selectedCityId && isFirstVisit) {
-      setIsFirstVisit(false)
+    const hasSelectedCity = selectedCityId !== DEFAULT_CITY;
+    if (isFirstVisit && !hasSelectedCity) {
+      openCitySelector()
+    } else if (hasSelectedCity) {
+      closeCitySelector()
     }
-  }, [selectedCityId, isFirstVisit, setIsFirstVisit])
+
+    return () => {
+      if (hasSelectedCity) {
+        setIsFirstVisit(false)
+      }
+    }
+  }, [selectedCityId, isFirstVisit]) // Dependencies needed for proper state management
 
   const setSelectedCity = (cityId: CityId) => {
     console.log('Setting selected city:', cityId)
