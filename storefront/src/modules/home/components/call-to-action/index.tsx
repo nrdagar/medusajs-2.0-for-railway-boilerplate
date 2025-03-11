@@ -1,8 +1,14 @@
+"use client"
+
 import { Heading, Text, Button } from "@medusajs/ui"
 import React from "react"
 import Image from "next/image"
+import { useCity } from "@lib/context/city-context"
 
 const CallToAction = () => {
+  const { selectedCity } = useCity()
+  const phoneNumber = selectedCity.phoneNumber.replace(/-/g, "")
+  
   return (
     <div className="py-16 bg-orange-500">
       <div className="content-container">
@@ -12,10 +18,10 @@ const CallToAction = () => {
               Ready to Rent a Dumpster?
             </Heading>
             <Text className="text-white/90 mb-6 sm:mb-8 text-base sm:text-lg max-w-xl">
-              Contact us today for fast, reliable dumpster rental services in NYC. We'll help you choose the right size for your project.
+              Contact us today for fast, reliable dumpster rental services in {selectedCity.name}. We'll help you choose the right size for your project.
             </Text>
             <Button variant="secondary" size="large" className="bg-white text-orange-500 hover:bg-grey-5 transition-colors py-3 px-8 text-base sm:text-lg font-medium" asChild>
-              <a href="tel:5165151951">CALL NOW: (516) 515-1951</a>
+              <a href={`tel:${phoneNumber}`}>CALL NOW: {selectedCity.phoneNumber}</a>
             </Button>
           </div>
           <div className="flex-1 flex justify-center mt-8 md:mt-0">
@@ -24,6 +30,7 @@ const CallToAction = () => {
                 src="/images/dumpster.jpg" 
                 alt="Dumpster" 
                 fill 
+                sizes="(max-width: 768px) 192px, (max-width: 1024px) 256px, 320px"
                 className="object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>

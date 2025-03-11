@@ -1,4 +1,5 @@
 const checkEnvVariables = require("./check-env-variables")
+const path = require('path')
 
 checkEnvVariables()
 
@@ -12,6 +13,17 @@ const nextConfig = {
   },
   typescript: {
     ignoreBuildErrors: true,
+  },
+  experimental: {
+    esmExternals: true,
+  },
+  webpack: (config) => {
+    config.resolve.alias = {
+      ...config.resolve.alias,
+      '@lib': path.resolve(__dirname, 'src/lib'),
+      '@modules': path.resolve(__dirname, 'src/modules'),
+    }
+    return config
   },
   images: {
     remotePatterns: [
