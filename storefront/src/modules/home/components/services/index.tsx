@@ -125,7 +125,7 @@ const Services = () => {
                 {/* Dumpster Image with Dimensions */}
                 <div className="p-6 flex justify-center relative">
                   <Image 
-                    src={`https://www.dumpsters.com/images/dumpster-sizes/${service.id}-dumpster-no-text.jpg`}
+                    src={`/images/dumpster-sizes/${service.id}-dumpster.jpg`}
                     alt={service.title} 
                     width={280}
                     height={160}
