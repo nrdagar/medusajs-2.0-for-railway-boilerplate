@@ -30,6 +30,7 @@ const CallToAction = () => {
                 src="/images/dumpster.jpg" 
                 alt="Dumpster" 
                 fill 
+                sizes="(max-width: 768px) 192px, (max-width: 1024px) 256px, 320px"
                 className="object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>

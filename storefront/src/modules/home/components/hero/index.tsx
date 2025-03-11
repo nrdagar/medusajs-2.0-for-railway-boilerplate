@@ -13,6 +13,7 @@ const Hero = () => {
           src="/images/dumpster.jpg" 
           alt="Dumpster rental service" 
           fill 
+          sizes="100vw"
           className="object-cover brightness-[0.75]"
           priority
         />
