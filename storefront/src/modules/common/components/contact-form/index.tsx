@@ -1,7 +1,7 @@
 "use client"
 
 import { Button } from "@medusajs/ui"
-import React, { useState, useEffect } from "react"
+import React, { useState } from "react"
 import InputExternalLabel from "../input-external-label"
 import TextAreaExternalLabel from "../textarea-external-label"
 import ServiceSelectExternalLabel from "../service-select-external-label"
@@ -36,18 +36,21 @@ const ContactForm = ({ inFooter = false }: ContactFormProps) => {
     formData.append('captchaToken', captchaToken)
     
     try {
-      const response = await fetch(`/${window.location.pathname.split('/')[1]}/api/contact`, {
+      const response = await fetch('/us/api/contact', {
         method: "POST",
         body: formData
       })
 
+      const data = await response.json()
+      
       if (!response.ok) {
-        throw new Error("Failed to submit form")
+        throw new Error(data.error || "Failed to submit form")
       }
 
       setFormSuccess(true)
       const form = e.target as HTMLFormElement
       form.reset()
+      setCaptchaToken(null)
     } catch (error) {
       setFormError("An error occurred. Please try again.")
       console.error("Form submission error:", error)
@@ -127,18 +130,10 @@ const ContactForm = ({ inFooter = false }: ContactFormProps) => {
             </div>
             
             <div className="flex justify-center my-4">
-              <div className="recaptcha-mock border border-gray-300 rounded p-4 flex flex-col items-center">
-                <div className="flex items-center mb-2">
-                  <input 
-                    type="checkbox" 
-                    id="mock-recaptcha" 
-                    className="mr-2 h-5 w-5"
-                    onChange={(e) => handleCaptchaChange(e.target.checked ? "mock-token-for-development" : null)}
-                  />
-                  <label htmlFor="mock-recaptcha" className="text-sm text-gray-700">I'm not a robot</label>
-                </div>
-                <div className="text-xs text-gray-500">Mock ReCAPTCHA (Real keys implementation pending)</div>
-              </div>
+              <ReCAPTCHA
+                sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || "6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"}
+                onChange={handleCaptchaChange}
+              />
             </div>
             
             {formError && (
