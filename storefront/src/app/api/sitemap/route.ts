@@ -3,6 +3,7 @@ import { getProductsList } from "@lib/data/products"
 import { getCollectionsList } from "@lib/data/collections"
 import { getCategoriesList } from "@lib/data/categories"
 import { listRegions } from "@lib/data/regions"
+import { CITIES } from "@lib/config/cities"
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://jbsdumpster.com'
@@ -71,6 +72,18 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         lastModified: new Date(),
         changeFrequency: 'weekly',
         priority: 0.7,
+      })
+    })
+  })
+
+  // Add service area pages
+  Object.values(CITIES).forEach(city => {
+    countryCodes.forEach(code => {
+      sitemapEntries.push({
+        url: `${baseUrl}/${code}/service-area/${city.slug}`,
+        lastModified: new Date(),
+        changeFrequency: 'weekly',
+        priority: 0.9,
       })
     })
   })

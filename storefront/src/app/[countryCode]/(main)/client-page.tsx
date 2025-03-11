@@ -1,7 +1,7 @@
 "use client"
 
 import Script from "next/script"
-import { createLocalBusinessSchema, createOrganizationSchema } from "@lib/util/structured-data"
+import { createLocalBusinessSchema, createOrganizationSchema, createFAQSchema } from "@lib/util/structured-data"
 import Hero from "@modules/home/components/hero"
 import Services from "@modules/home/components/services"
 import UseCases from "@modules/home/components/use-cases"
@@ -13,6 +13,7 @@ import CitySelector from "@modules/common/components/city-selector"
 export default function ClientPage() {
   const organizationSchema = createOrganizationSchema()
   const localBusinessSchema = createLocalBusinessSchema()
+  const faqSchema = createFAQSchema()
   
   return (
     <>
@@ -25,6 +26,11 @@ export default function ClientPage() {
         id="local-business-schema"
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
+      />
+      <Script
+        id="faq-schema"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
       
       <CitySelector />

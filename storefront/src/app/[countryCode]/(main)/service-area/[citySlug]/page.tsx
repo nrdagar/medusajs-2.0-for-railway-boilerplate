@@ -30,7 +30,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title: `Dumpster Rental in ${city.fullName} | ${STORE_NAME}`,
     description: city.metaDescription,
     alternates: {
-      canonical: `/service-area/${city.slug}`,
+      canonical: `${process.env.NEXT_PUBLIC_BASE_URL || 'https://jbsdumpster.com'}/service-area/${city.slug}`,
+    },
+    openGraph: {
+      title: `Dumpster Rental in ${city.fullName} | ${STORE_NAME}`,
+      description: city.metaDescription,
+      url: `${process.env.NEXT_PUBLIC_BASE_URL || 'https://jbsdumpster.com'}/service-area/${city.slug}`,
+      type: "website",
     },
   }
 }
