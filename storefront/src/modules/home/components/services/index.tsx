@@ -114,42 +114,45 @@ const Services = () => {
         
         <div className="relative">
           {/* Dumpster Size Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4 px-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6 px-4 max-w-[1400px] mx-auto">
             {services.map((service) => (
               <div key={service.id} className="flex flex-col bg-white border border-gray-200 overflow-hidden">
                 {/* Header */}
-                <div className="bg-gray-800 text-white p-4 text-center">
-                  <h3 className="text-xl font-bold">{service.title}</h3>
+                <div className="bg-gray-900 text-white p-3 text-center">
+                  <h3 className="text-lg font-bold">{service.title}</h3>
                 </div>
                 
                 {/* Dumpster Image with Dimensions */}
-                <div className="p-4 flex justify-center relative">
+                <div className="p-6 flex justify-center relative">
                   <Image 
                     src={service.image} 
                     alt={service.title} 
-                    width={250}
-                    height={150}
+                    width={280}
+                    height={160}
                     className="object-contain"
                   />
                   
                   {/* Dimensions */}
-                  <div className="absolute top-4 left-4 text-xs text-gray-600">
+                  <div className="absolute top-2 left-2 text-sm font-medium text-gray-700 bg-white/80 px-2 py-0.5 rounded">
                     {service.dimensions.height}
                   </div>
-                  <div className="absolute bottom-4 left-4 text-xs text-gray-600">
+                  <div className="absolute bottom-2 left-2 text-sm font-medium text-gray-700 bg-white/80 px-2 py-0.5 rounded">
                     {service.dimensions.length}
                   </div>
-                  <div className="absolute bottom-4 right-4 text-xs text-gray-600">
+                  <div className="absolute bottom-2 right-2 text-sm font-medium text-gray-700 bg-white/80 px-2 py-0.5 rounded">
                     {service.dimensions.width}
                   </div>
                 </div>
                 
                 {/* Best For Section */}
-                <div className="p-4 flex-grow">
-                  <h4 className="font-semibold mb-2">{service.description}</h4>
-                  <ul className="list-disc pl-5 space-y-1">
+                <div className="px-6 pb-6 flex-grow">
+                  <h4 className="font-bold text-gray-800 mb-3">{service.description}</h4>
+                  <ul className="space-y-2">
                     {service.details.map((detail, index) => (
-                      <li key={index} className="text-gray-700">{detail}</li>
+                      <li key={index} className="flex items-start text-gray-600">
+                        <span className="mr-2 text-gray-400">•</span>
+                        {detail}
+                      </li>
                     ))}
                   </ul>
                 </div>
@@ -158,30 +161,35 @@ const Services = () => {
           </div>
           
           {/* Call to Action Buttons */}
-          <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-4 px-4">
-            <a 
-              href="tel:5165151951" 
-              className="bg-orange-500 hover:bg-orange-600 text-white text-center py-4 rounded-md flex items-center justify-center gap-2"
-            >
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-5 h-5">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-              </svg>
-              <span className="font-semibold">(516) 515-1951</span>
-            </a>
-            <Button 
-              variant="secondary" 
-              className="bg-teal-600 hover:bg-teal-700 text-white py-4 rounded-md flex items-center justify-center gap-2" 
-              onClick={() => {
-                openPhonePopup()
-              }}
-            >
-              <span className="font-semibold">Order Online</span>
-            </Button>
-          </div>
-          
-          {/* Disclaimer */}
-          <div className="text-center text-gray-500 text-sm mt-6 px-4">
-            Please Note: Exterior dumpster dimensions may vary by manufacturer, but the total volume is accurate.
+          <div className="mt-12 max-w-[1400px] mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 px-4">
+              <a 
+                href="tel:5165151951" 
+                className="bg-orange-500 hover:bg-orange-600 text-white text-center py-5 rounded-lg flex items-center justify-center gap-3 shadow-lg hover:shadow-xl transition-all transform hover:scale-[1.02]"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-6 h-6">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                </svg>
+                <span className="text-lg font-bold tracking-wide">678-233-1434</span>
+              </a>
+              <Button 
+                variant="secondary" 
+                className="bg-teal-600 hover:bg-teal-700 text-white py-5 rounded-lg flex items-center justify-center gap-3 shadow-lg hover:shadow-xl transition-all transform hover:scale-[1.02]" 
+                onClick={() => {
+                  openPhonePopup()
+                }}
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-6 h-6">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+                </svg>
+                <span className="text-lg font-bold tracking-wide">Order Online</span>
+              </Button>
+            </div>
+            
+            {/* Disclaimer */}
+            <div className="text-center text-gray-600 text-sm mt-8 px-4 italic">
+              Please Note: Exterior dumpster dimensions may vary by manufacturer, but the total volume is accurate.
+            </div>
           </div>
         </div>
       </div>
