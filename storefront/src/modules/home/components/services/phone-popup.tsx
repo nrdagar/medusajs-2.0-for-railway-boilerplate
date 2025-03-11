@@ -3,8 +3,8 @@
 import React from "react"
 import Modal from "../../../../modules/common/components/modal"
 import { Button, Heading, Text } from "@medusajs/ui"
-import { Phone } from "@medusajs/icons"
-import { useCity } from "@lib/context/city-context"
+// Removed @medusajs/icons import since it's not available
+import { useCity } from "../../../../lib/context/city-context"
 
 const PhonePopup = ({
   isOpen,
@@ -21,7 +21,7 @@ const PhonePopup = ({
       <Modal.Title>Contact Us to Book Your Dumpster</Modal.Title>
       <Modal.Body>
         <div className="flex flex-col items-center py-4">
-          <Phone className="w-12 h-12 text-orange-500 mb-4" />
+          <div className="w-12 h-12 text-orange-500 mb-4">📞</div>
           <Text className="text-center mb-2">
             Call us now to book your dumpster rental in {selectedCity.name}:
           </Text>

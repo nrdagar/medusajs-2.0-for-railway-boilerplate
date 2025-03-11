@@ -3,9 +3,9 @@
 import React, { useState } from "react"
 import Modal from "@modules/common/components/modal"
 import { Button, Heading, Text } from "@medusajs/ui"
-import { useCity } from "@lib/context/city-context"
-import { CITIES } from "@lib/config/cities"
-import { CityId } from "@lib/types/city"
+import { useCity } from "../../../../lib/context/city-context"
+import { CITIES } from "../../../../lib/config/cities"
+import { CityId } from "../../../../lib/types/city"
 import Image from "next/image"
 
 const CitySelector = () => {
@@ -91,7 +91,7 @@ const CitySelector = () => {
                     <Image src={city.icon} width={32} height={32} alt={city.name} />
                   </div>
                   <div>
-                    <Heading level="h4" className="text-lg font-semibold">
+                    <Heading level="h3" className="text-lg font-semibold">
                       {city.name}
                     </Heading>
                     <Text className="text-sm text-gray-500">

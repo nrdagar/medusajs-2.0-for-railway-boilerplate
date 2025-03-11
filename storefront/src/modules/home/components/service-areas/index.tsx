@@ -1,7 +1,7 @@
 import { Heading, Text } from "@medusajs/ui"
 import React from "react"
 import Image from "next/image"
-import { CITIES } from "@lib/config/cities"
+import { CITIES } from "../../../../lib/config/cities"
 
 const ServiceAreas = () => {
   const areas = Object.values(CITIES)
