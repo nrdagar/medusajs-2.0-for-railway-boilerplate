@@ -7,15 +7,11 @@ export async function POST(req: NextRequest) {
     // Get reCAPTCHA token
     const captchaToken = formData.get("captchaToken") as string
     
-    // Allow mock token for development
-    if (captchaToken === "mock-token-for-development") {
-      console.log("Using mock ReCAPTCHA token for development")
-    } 
-    // Verify real reCAPTCHA token
-    else if (captchaToken) {
+    // Verify reCAPTCHA token
+    if (captchaToken) {
       try {
         const recaptchaResponse = await fetch(
-          `https://www.google.com/recaptcha/api/siteverify?secret=${process.env.RECAPTCHA_SECRET_KEY || "6LcUi_EqAAAAAGxXDylQU23L7_wbZ_HJ4RO4ljX6"}&response=${captchaToken}`,
+          `https://www.google.com/recaptcha/api/siteverify?secret=${process.env.RECAPTCHA_SECRET_KEY}&response=${captchaToken}`,
           { method: 'POST' }
         )
         
