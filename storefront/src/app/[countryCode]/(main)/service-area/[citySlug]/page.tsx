@@ -45,9 +45,17 @@ export default function ServiceAreaPage({ params }: Props) {
     notFound()
   }
 
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://jbsdumpster.com'
+  const canonicalUrl = `${baseUrl}/us/service-area/${params.citySlug}`
+
   return (
-    <Suspense fallback={<div>Loading...</div>}>
-      <ServiceAreaTemplate city={city} />
-    </Suspense>
+    <>
+      <head>
+        <link rel="canonical" href={canonicalUrl} />
+      </head>
+      <Suspense fallback={<div>Loading...</div>}>
+        <ServiceAreaTemplate city={city} />
+      </Suspense>
+    </>
   )
 }
