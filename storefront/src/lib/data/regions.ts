@@ -37,11 +37,13 @@ export const getRegion = cache(async function (countryCode: string) {
       })
     })
 
-    const region = countryCode
-      ? regionMap.get(countryCode)
-      : regionMap.get("us")
-
-    return region
+    // Always return US region since this is a US-only business
+    return {
+      id: "reg_us",
+      name: "United States",
+      currency_code: "usd",
+      countries: [{ iso_2: "us", display_name: "United States" }]
+    }
   } catch (e: any) {
     return null
   }
