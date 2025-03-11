@@ -1,5 +1,3 @@
-"use client"
-
 import Script from "next/script"
 import { createLocalBusinessSchema, createOrganizationSchema } from "../../../lib/util/structured-data"
 
