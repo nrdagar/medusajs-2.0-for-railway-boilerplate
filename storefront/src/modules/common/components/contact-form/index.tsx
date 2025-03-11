@@ -127,10 +127,18 @@ const ContactForm = ({ inFooter = false }: ContactFormProps) => {
             </div>
             
             <div className="flex justify-center my-4">
-              <ReCAPTCHA
-                sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || "6LcUi_EqAAAAAHDadqZ6T-szHnw-4PBJ55CXP2Ar"}
-                onChange={handleCaptchaChange}
-              />
+              <div className="recaptcha-mock border border-gray-300 rounded p-4 flex flex-col items-center">
+                <div className="flex items-center mb-2">
+                  <input 
+                    type="checkbox" 
+                    id="mock-recaptcha" 
+                    className="mr-2 h-5 w-5"
+                    onChange={(e) => handleCaptchaChange(e.target.checked ? "mock-token-for-development" : null)}
+                  />
+                  <label htmlFor="mock-recaptcha" className="text-sm text-gray-700">I'm not a robot</label>
+                </div>
+                <div className="text-xs text-gray-500">Mock ReCAPTCHA (Real keys implementation pending)</div>
+              </div>
             </div>
             
             {formError && (
