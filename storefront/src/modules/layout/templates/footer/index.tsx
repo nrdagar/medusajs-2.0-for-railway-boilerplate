@@ -2,6 +2,7 @@ import { getCategoriesList } from "@lib/data/categories"
 import { getCollectionsList } from "@lib/data/collections"
 import { Text, clx } from "@medusajs/ui"
 import { STORE_NAME } from "@lib/constants"
+import { CITIES } from "@lib/config/cities"
 
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
 import ContactForm from "@modules/common/components/contact-form"
@@ -43,23 +44,29 @@ export default async function Footer() {
             </div>
           </div>
           
-          {displayCollections.length > 0 && (
-            <div className="flex flex-col">
-              <h3 className="text-xl font-semibold text-grey-90 mb-6">Collections</h3>
-              <ul className="grid grid-cols-1 gap-3">
-                {displayCollections.map((collection) => (
-                  <li key={collection.id}>
-                    <LocalizedClientLink
-                      href={`/collections/${collection.handle}`}
-                      className="text-grey-50 hover:text-grey-90 transition-colors"
-                    >
-                      {collection.title}
-                    </LocalizedClientLink>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          )}
+          <div className="flex flex-col">
+            <h3 className="text-xl font-semibold text-grey-90 mb-6">Quick Links</h3>
+            <ul className="grid grid-cols-1 gap-3">
+              <li>
+                <LocalizedClientLink
+                  href="/about-us"
+                  className="text-grey-50 hover:text-grey-90 transition-colors"
+                >
+                  About Us
+                </LocalizedClientLink>
+              </li>
+              {Object.values(CITIES).map((city) => (
+                <li key={city.id}>
+                  <LocalizedClientLink
+                    href={`/service-area/${city.slug}`}
+                    className="text-grey-50 hover:text-grey-90 transition-colors"
+                  >
+                    {city.name} Service Area
+                  </LocalizedClientLink>
+                </li>
+              ))}
+            </ul>
+          </div>
           
           <div className="bg-white p-4 md:p-8 lg:p-10 rounded-lg shadow-lg border border-gray-300 lg:col-span-8">
             <ContactForm inFooter={true} />
