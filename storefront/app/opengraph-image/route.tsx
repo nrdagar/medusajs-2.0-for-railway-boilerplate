@@ -1,13 +1,13 @@
 import { ImageResponse } from '@vercel/og'
  
 export const runtime = 'edge'
-export const alt = "JBS Builder Lic Dumpster Rental Services - NYC's Premier Waste Management Solution"
-export const size = {
+
+const size = {
   width: 1200,
   height: 630,
 }
- 
-export default function Image() {
+
+export async function GET() {
   return new ImageResponse(
     (
       <div
