@@ -175,10 +175,7 @@ const Services = () => {
               </a>
             </div>
             
-            {/* Disclaimer */}
-            <div className="text-center text-gray-600 text-sm mt-8 px-4 italic">
-              Please Note: Exterior dumpster dimensions may vary by manufacturer, but the total volume is accurate.
-            </div>
+
           </div>
         </div>
       </div>
