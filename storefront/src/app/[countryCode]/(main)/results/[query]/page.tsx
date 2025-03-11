@@ -3,17 +3,19 @@ import { Metadata } from "next"
 import SearchResultsTemplate from "@modules/search/templates/search-results-template"
 
 import { search } from "@modules/search/actions"
-import { SortOptions } from "@modules/store/components/refinement-list/sort-products"
 
 export const metadata: Metadata = {
-  title: "Search",
-  description: "Explore all of our products.",
+  title: "Search Results | JBS Builder Lic",
+  description: "Search results for dumpster rental services in NYC.",
+  robots: {
+    index: false,
+    follow: false,
+  }
 }
 
 type Params = {
   params: { query: string; countryCode: string }
   searchParams: {
-    sortBy?: SortOptions
     page?: string
   }
 }
@@ -33,9 +35,6 @@ export default async function SearchResults({ params, searchParams }: Params) {
   return (
     <SearchResultsTemplate
       query={query}
-      ids={ids}
-      sortBy={sortBy}
-      page={page}
       countryCode={params.countryCode}
     />
   )
