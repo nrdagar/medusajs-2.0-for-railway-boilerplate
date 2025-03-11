@@ -22,9 +22,15 @@ export const getCityByName = (name: string): CityConfig | undefined => {
 }
 
 export const getCityByPincode = (pincode: string): CityConfig | undefined => {
-  // This is a simplified implementation
-  // In a real app, you would have a mapping of pincodes to cities
-  // For now, we'll just check if the pincode starts with a certain digit
+  // Check each city's zip codes array
+  for (const cityId of Object.keys(CITIES) as CityId[]) {
+    const city = CITIES[cityId]
+    if (city.zipCodes.includes(pincode)) {
+      return city
+    }
+  }
+  
+  // Fallback to the simplified implementation for backward compatibility
   if (pincode.startsWith("1")) return CITIES.queens
   if (pincode.startsWith("2")) return CITIES.manhattan
   if (pincode.startsWith("3")) return CITIES.brooklyn

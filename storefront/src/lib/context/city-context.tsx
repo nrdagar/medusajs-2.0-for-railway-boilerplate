@@ -13,6 +13,7 @@ interface CityContext {
   openCitySelector: () => void
   closeCitySelector: () => void
   isFirstVisit: boolean
+  setIsFirstVisit: (value: boolean) => void
 }
 
 const CityContext = createContext<CityContext | null>(null)
@@ -24,18 +25,8 @@ export const CityProvider: React.FC<{ children: React.ReactNode }> = ({
   const [isFirstVisit, setIsFirstVisit] = useLocalStorage<boolean>("isFirstVisit", true)
   const [showCitySelector, openCitySelector, closeCitySelector] = useToggleState(false)
   
-  // Show city selector only on first visit and after hydration
-  useEffect(() => {
-    if (typeof window === 'undefined') return;
-
-    const hasSelectedCity = selectedCityId !== DEFAULT_CITY;
-    if (isFirstVisit && !hasSelectedCity) {
-      openCitySelector()
-    } else if (hasSelectedCity) {
-      closeCitySelector()
-      setIsFirstVisit(false)
-    }
-  }, [selectedCityId]) // Only depend on selectedCityId to prevent re-renders
+  // Removed automatic city selector on first visit
+  // User will now use the zip code search on the landing page
 
   const setSelectedCity = (cityId: CityId) => {
     setSelectedCityId(cityId)
@@ -53,7 +44,8 @@ export const CityProvider: React.FC<{ children: React.ReactNode }> = ({
         showCitySelector,
         openCitySelector,
         closeCitySelector,
-        isFirstVisit
+        isFirstVisit,
+        setIsFirstVisit
       }}
     >
       {children}
