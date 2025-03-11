@@ -256,3 +256,31 @@ export const createLocalBusinessSchema = () => {
     "url": process.env.NEXT_PUBLIC_BASE_URL || "https://jbsdumpster.com"
   }
 }
+
+export const createProductSchema = (product: any) => {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": product.title,
+    "description": product.description,
+    "image": product.thumbnail,
+    "sku": product.id,
+    "brand": {
+      "@type": "Brand",
+      "name": STORE_NAME
+    },
+    "offers": {
+      "@type": "Offer",
+      "url": `${process.env.NEXT_PUBLIC_BASE_URL || "https://jbsdumpster.com"}/products/${product.handle}`,
+      "priceCurrency": "USD",
+      "price": product.variants[0]?.prices[0]?.amount 
+        ? (product.variants[0].prices[0].amount / 100).toFixed(2)
+        : "Call for pricing",
+      "availability": "https://schema.org/InStock",
+      "seller": {
+        "@type": "Organization",
+        "name": STORE_NAME
+      }
+    }
+  }
+}
