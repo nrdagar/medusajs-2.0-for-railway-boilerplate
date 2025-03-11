@@ -2,54 +2,126 @@
 
 import { Heading, Text, Button } from "@medusajs/ui"
 import LocalizedClientLink from "../../../../modules/common/components/localized-client-link"
-import React, { useState } from "react"
+import React, { useState, useCallback, useEffect } from "react"
 import Image from "next/image"
 import useToggleState from "@lib/hooks/use-toggle-state"
 import PhonePopup from "./phone-popup"
+import useEmblaCarousel from 'embla-carousel-react'
 
 const Services = () => {
   const { state: isPhonePopupOpen, open: openPhonePopup, close: closePhonePopup } = useToggleState(false)
   const [selectedService, setSelectedService] = useState("")
+  
+  // Embla carousel setup
+  const [emblaRef, emblaApi] = useEmblaCarousel({ 
+    loop: true,
+    align: 'start',
+    skipSnaps: false
+  })
+  
+  const [prevBtnEnabled, setPrevBtnEnabled] = useState(false)
+  const [nextBtnEnabled, setNextBtnEnabled] = useState(false)
+  
+  const scrollPrev = useCallback(() => emblaApi && emblaApi.scrollPrev(), [emblaApi])
+  const scrollNext = useCallback(() => emblaApi && emblaApi.scrollNext(), [emblaApi])
+  
+  const onSelect = useCallback(() => {
+    if (!emblaApi) return
+    setPrevBtnEnabled(emblaApi.canScrollPrev())
+    setNextBtnEnabled(emblaApi.canScrollNext())
+  }, [emblaApi])
+  
+  useEffect(() => {
+    if (!emblaApi) return
+    onSelect()
+    emblaApi.on('select', onSelect)
+    emblaApi.on('reInit', onSelect)
+  }, [emblaApi, onSelect])
 
   const services = [
     {
       id: "10-yard",
       title: "10 Yard Dumpster",
-      description: "Perfect for small home projects",
-      details: ["Holds approx. 3 pickup truck loads"],
-      image: "/images/dumpster.jpg",
+      description: "Best for",
+      details: [
+        "Small remodels",
+        "Concrete, asphalt & brick",
+        "Dirt & sand"
+      ],
+      dimensions: {
+        length: "14 ft",
+        width: "7.5 ft",
+        height: "3.5 ft"
+      },
+      image: "/images/dumpster-sizes/10-yard-dumpster.jpg",
       link: "/services/10-yard",
     },
     {
       id: "15-yard",
       title: "15 Yard Dumpster",
-      description: "Ideal for medium renovation projects",
-      details: ["Holds approx. 4 pickup truck loads"],
-      image: "/images/dumpster.jpg",
+      description: "Best for",
+      details: [
+        "Roofing projects",
+        "Small home remodels",
+        "Concrete, asphalt & brick"
+      ],
+      dimensions: {
+        length: "16 ft",
+        width: "7.5 ft",
+        height: "4.5 ft"
+      },
+      image: "/images/dumpster-sizes/15-yard-dumpster.jpg",
       link: "/services/15-yard",
     },
     {
       id: "20-yard",
       title: "20 Yard Dumpster",
-      description: "Great for large home cleanouts",
-      details: ["Holds approx. 6 pickup truck loads"],
-      image: "/images/dumpster.jpg",
+      description: "Best for",
+      details: [
+        "Home cleanouts",
+        "Small home remodels",
+        "Roofing projects"
+      ],
+      dimensions: {
+        length: "22 ft",
+        width: "7.5 ft",
+        height: "4.5 ft"
+      },
+      image: "/images/dumpster-sizes/20-yard-dumpster.jpg",
       link: "/services/20-yard",
     },
     {
       id: "30-yard",
       title: "30 Yard Dumpster",
-      description: "Perfect for construction projects",
-      details: ["Holds approx. 10 pickup truck loads"],
-      image: "/images/dumpster.jpg",
+      description: "Best for",
+      details: [
+        "Mid-sized remodels",
+        "House cleanups",
+        "Construction projects"
+      ],
+      dimensions: {
+        length: "22 ft",
+        width: "7.5 ft",
+        height: "6 ft"
+      },
+      image: "/images/dumpster-sizes/30-yard-dumpster.jpg",
       link: "/services/30-yard",
     },
     {
       id: "40-yard",
       title: "40 Yard Dumpster",
-      description: "Ideal for commercial projects",
-      details: ["Holds approx. 14 pickup truck loads"],
-      image: "/images/dumpster.jpg",
+      description: "Best for",
+      details: [
+        "Large construction",
+        "Commercial projects",
+        "Industrial cleanups"
+      ],
+      dimensions: {
+        length: "22 ft",
+        width: "8 ft",
+        height: "8 ft"
+      },
+      image: "/images/dumpster-sizes/40-yard-dumpster.jpg",
       link: "/services/40-yard",
     },
   ]
@@ -66,49 +138,78 @@ const Services = () => {
           </Text>
         </div>
         
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-8 sm:gap-10 xl:gap-12 px-4 sm:px-6 lg:px-8">
-          {services.map((service) => (
-            <div key={service.id} className="flex flex-col bg-white rounded-lg overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:translate-y-[-5px] border-t-4 border-orange-600">
-              <div className="h-56 sm:h-64 bg-grey-5 flex items-center justify-center relative overflow-hidden">
-                <div className="absolute top-4 right-4 z-10 bg-orange-600 text-white px-5 py-2 rounded-md text-sm font-bold shadow-lg">
-                  {service.id.split('-')[0]} YD
+        <div className="relative max-w-[1200px] mx-auto px-4">
+          <div className="embla overflow-hidden" ref={emblaRef}>
+            <div className="embla__container flex">
+              {services.map((service) => (
+                <div key={service.id} className="embla__slide flex-[0_0_100%] min-w-0 sm:flex-[0_0_50%] md:flex-[0_0_33.33%] lg:flex-[0_0_25%] xl:flex-[0_0_20%] px-2">
+                  <div className="flex flex-col h-full border border-gray-200 overflow-hidden">
+                    {/* Header */}
+                    <div className="bg-[#1B2A4A] text-white p-3.5 text-center">
+                      <h3 className="text-lg font-bold tracking-wide">{service.title}</h3>
+                    </div>
+                    
+                    {/* Dumpster Image with Dimensions */}
+                    <div className="p-6 flex justify-center relative bg-white">
+                      <div className="relative w-full h-[180px]">
+                        <Image 
+                          src={service.image}
+                          alt={service.title} 
+                          fill
+                          className="object-contain"
+                          priority
+                        />
+                        
+                        {/* Dimensions */}
+                        <div className="absolute top-2 right-2 text-sm font-bold text-gray-900 bg-white/95 px-2.5 py-1.5 rounded-md shadow-md">
+                          {service.dimensions.height}
+                        </div>
+                        <div className="absolute bottom-2 left-2 text-sm font-bold text-gray-900 bg-white/95 px-2.5 py-1.5 rounded-md shadow-md">
+                          {service.dimensions.length}
+                        </div>
+                        <div className="absolute bottom-2 right-2 text-sm font-bold text-gray-900 bg-white/95 px-2.5 py-1.5 rounded-md shadow-md">
+                          {service.dimensions.width}
+                        </div>
+                      </div>
+                    </div>
+                    
+                    {/* Best For Section */}
+                    <div className="px-6 pb-6 flex-grow bg-white">
+                      <h4 className="font-bold text-gray-800 mb-3">{service.description}</h4>
+                      <ul className="space-y-3">
+                        {service.details.map((detail, index) => (
+                          <li key={index} className="flex items-start text-gray-700">
+                            <span className="mr-2.5 text-orange-500 text-lg">•</span>
+                            {detail}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
                 </div>
-                <Image 
-                  src={service.image} 
-                  alt={service.title} 
-                  fill 
-                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, (max-width: 1280px) 33vw, 20vw"
-                  className="object-cover hover:scale-110 transition-transform duration-700 brightness-[0.95]"
-                />
-              </div>
-              <div className="p-6 sm:p-8 flex-grow flex flex-col">
-                <Heading level="h3" className="text-xl sm:text-2xl font-bold mb-3 sm:mb-4 text-grey-90">
-                  {service.title}
-                </Heading>
-                <Text className="text-grey-60 mb-4 sm:mb-5 text-base">
-                  {service.description}
-                </Text>
-                <ul className="mb-6 sm:mb-7 space-y-3 flex-grow">
-                  {service.details.map((detail, index) => (
-                    <li key={index} className="flex items-start text-grey-70 text-base">
-                      <span className="flex-shrink-0 w-5 h-5 mr-3 bg-green-100 text-green-600 rounded-full flex items-center justify-center text-sm font-bold">✓</span>
-                      {detail}
-                    </li>
-                  ))}
-                </ul>
-                <Button 
-                  variant="secondary" 
-                  className="w-full bg-orange-600 text-white hover:bg-orange-700 transition-all py-4 px-6 text-base font-bold rounded-md shadow-md hover:shadow-lg active:transform active:translate-y-[2px]" 
-                  onClick={() => {
-                    setSelectedService(service.id)
-                    openPhonePopup()
-                  }}
-                >
-                  Book Now
-                </Button>
-              </div>
+              ))}
             </div>
-          ))}
+          </div>
+          
+          {/* Navigation Buttons */}
+          <button 
+            className={`absolute top-1/2 left-0 transform -translate-y-1/2 z-10 bg-white rounded-full p-2 shadow-md ${!prevBtnEnabled ? 'opacity-50 cursor-not-allowed' : 'hover:bg-gray-100'}`}
+            onClick={scrollPrev}
+            disabled={!prevBtnEnabled}
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-6 h-6">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+            </svg>
+          </button>
+          <button 
+            className={`absolute top-1/2 right-0 transform -translate-y-1/2 z-10 bg-white rounded-full p-2 shadow-md ${!nextBtnEnabled ? 'opacity-50 cursor-not-allowed' : 'hover:bg-gray-100'}`}
+            onClick={scrollNext}
+            disabled={!nextBtnEnabled}
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-6 h-6">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+            </svg>
+          </button>
         </div>
       </div>
       <PhonePopup isOpen={isPhonePopupOpen} close={closePhonePopup} />
