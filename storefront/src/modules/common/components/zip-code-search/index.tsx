@@ -70,13 +70,13 @@ const ZipCodeSearch: React.FC<ZipCodeSearchProps> = ({
               setError(null)
             }}
             placeholder={placeholder}
-            className="flex-1 p-3 border border-gray-200 rounded-lg text-base"
+            className="flex-1 p-4 border-2 border-gray-200 rounded-lg text-lg font-medium focus:border-orange-600 focus:ring-2 focus:ring-orange-600/20 transition-all"
             maxLength={5}
           />
           <Button 
             type="submit"
             variant="primary" 
-            className="bg-orange-500 hover:bg-orange-600 px-6"
+            className="bg-orange-600 hover:bg-orange-700 px-8 py-4 text-lg font-bold rounded-lg shadow-lg hover:shadow-xl transition-all transform hover:translate-y-[-2px]"
           >
             {buttonText}
           </Button>
