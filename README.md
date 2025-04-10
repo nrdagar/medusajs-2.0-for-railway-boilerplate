@@ -39,6 +39,7 @@ This boilerplate is a monorepo consisting of the officially released MedusaJS 2.
 
 Updated: to `version 2.4.0` 🥳 (Last verified: April 2025)
 testing active mode
+testing sleep mode
 
 ## Preconfigured 3rd party integrations
 
