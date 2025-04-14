@@ -150,7 +150,7 @@ export const createFAQSchema = () => {
           "@type": "Answer",
           "text": "Hazardous materials, batteries, paint, oils, asbestos, and certain electronics cannot be disposed of in our dumpsters. Contact us for a complete list of prohibited items."
         }
-      },
+      }, // testing active mode
       {
         "@type": "Question",
         "name": "Can I extend my dumpster rental period?",
