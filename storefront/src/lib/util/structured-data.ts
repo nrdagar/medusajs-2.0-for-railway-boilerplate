@@ -150,6 +150,14 @@ export const createFAQSchema = () => {
           "@type": "Answer",
           "text": "Hazardous materials, batteries, paint, oils, asbestos, and certain electronics cannot be disposed of in our dumpsters. Contact us for a complete list of prohibited items."
         }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I extend my dumpster rental period?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, you can extend your rental period by contacting our customer service. Extension fees may apply based on the dumpster size and additional time needed."
+        }
       }
     ]
   }
