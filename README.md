@@ -39,6 +39,8 @@ This boilerplate is a monorepo consisting of the officially released MedusaJS 2.
 
 Updated: to `version 2.4.0` 🥳 (Dummy change for testing)
 
+testing Devin sleep mode
+
 ## Preconfigured 3rd party integrations
 
 - MinIO file storage: Replaces local file storage with MinIO cloud storage, automatically creating a 'medusa-media' bucket for your media files. [README](backend/src/modules/minio-file/README.md)
