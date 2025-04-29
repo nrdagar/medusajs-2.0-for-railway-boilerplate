@@ -2,13 +2,13 @@
 
 import Script from "next/script"
 import { createLocalBusinessSchema, createOrganizationSchema } from "@lib/util/structured-data"
-import Hero from "@modules/home/components/hero"
-import Services from "@modules/home/components/services"
-import UseCases from "@modules/home/components/use-cases"
-import ServiceAreas from "@modules/home/components/service-areas"
-import WhyChooseUs from "@modules/home/components/why-choose-us"
-import CallToAction from "@modules/home/components/call-to-action"
-import CitySelector from "@modules/common/components/city-selector"
+import ElonHeroSection from "@modules/elon/components/hero-section"
+import BiographyHighlights from "@modules/elon/components/biography-highlights"
+import CompaniesOverview from "@modules/elon/components/companies-overview"
+import AchievementsSection from "@modules/elon/components/achievements"
+import MediaGalleryPreview from "@modules/elon/components/media-gallery"
+import TimelineSummary from "@modules/elon/components/timeline"
+// import CitySelector from "@modules/common/components/city-selector" // Removed as it's not relevant for Elon Musk site
 
 export default function ClientPage() {
   const organizationSchema = createOrganizationSchema()
@@ -27,13 +27,13 @@ export default function ClientPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
       />
       
-      <CitySelector />
-      <Hero />
-      <Services />
-      <UseCases />
-      <ServiceAreas />
-      <WhyChooseUs />
-      <CallToAction />
+      {/* <CitySelector /> */} {/* Removed as it's not relevant for Elon Musk site */}
+      <ElonHeroSection />
+      <BiographyHighlights />
+      <CompaniesOverview />
+      <AchievementsSection />
+      <MediaGalleryPreview />
+      <TimelineSummary />
     </>
   )
 }
