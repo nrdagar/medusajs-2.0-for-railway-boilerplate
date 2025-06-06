@@ -7,8 +7,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // Get all regions
   const regions = await listRegions()
   const countryCodes = regions
-    ?.map((r) => r.countries?.map((c) => c.iso_2))
-    .flat()
+    ?.flatMap((r) => r.countries?.map((c) => c.iso_2))
     .filter(Boolean) as string[]
   
   if (!countryCodes || countryCodes.length === 0) {

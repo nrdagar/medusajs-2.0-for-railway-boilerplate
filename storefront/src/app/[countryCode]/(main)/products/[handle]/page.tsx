@@ -16,8 +16,7 @@ export async function generateStaticParams() {
   const countryCodes = await listRegions().then(
     (regions) =>
       regions
-        ?.map((r) => r.countries?.map((c) => c.iso_2))
-        .flat()
+        ?.flatMap((r) => r.countries?.map((c) => c.iso_2))
         .filter(Boolean) as string[]
   )
 
@@ -30,17 +29,16 @@ export async function generateStaticParams() {
       return getProductsList({ countryCode })
     })
   ).then((responses) =>
-    responses.map(({ response }) => response.products).flat()
+    responses.flatMap(({ response }) => response.products)
   )
 
   const staticParams = countryCodes
-    ?.map((countryCode) =>
+    ?.flatMap((countryCode) =>
       products.map((product) => ({
         countryCode,
         handle: product.handle,
       }))
     )
-    .flat()
 
   return staticParams
 }

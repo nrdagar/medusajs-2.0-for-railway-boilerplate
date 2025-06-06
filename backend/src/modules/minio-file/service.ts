@@ -96,40 +96,14 @@ class MinioFileProviderService extends AbstractFileProviderService {
         await this.client.makeBucket(this.bucket)
         this.logger_.info(`Created bucket: ${this.bucket}`)
 
-        // Set bucket policy to allow public read access
-        const policy = {
-          Version: '2012-10-17',
-          Statement: [
-            {
-              Sid: 'PublicRead',
-              Effect: 'Allow',
-              Principal: '*',
-              Action: ['s3:GetObject'],
-              Resource: [`arn:aws:s3:::${this.bucket}/*`]
-            }
-          ]
-        }
-
-        await this.client.setBucketPolicy(this.bucket, JSON.stringify(policy))
+        await this.setBucketPublicReadPolicy()
         this.logger_.info(`Set public read policy for bucket: ${this.bucket}`)
       } else {
         this.logger_.info(`Using existing bucket: ${this.bucket}`)
         
         // Verify/update policy on existing bucket
         try {
-          const policy = {
-            Version: '2012-10-17',
-            Statement: [
-              {
-                Sid: 'PublicRead',
-                Effect: 'Allow',
-                Principal: '*',
-                Action: ['s3:GetObject'],
-                Resource: [`arn:aws:s3:::${this.bucket}/*`]
-              }
-            ]
-          }
-          await this.client.setBucketPolicy(this.bucket, JSON.stringify(policy))
+          await this.setBucketPublicReadPolicy()
           this.logger_.info(`Updated public read policy for existing bucket: ${this.bucket}`)
         } catch (policyError) {
           this.logger_.warn(`Failed to update policy for existing bucket: ${policyError.message}`)
@@ -139,6 +113,22 @@ class MinioFileProviderService extends AbstractFileProviderService {
       this.logger_.error(`Error initializing bucket: ${error.message}`)
       throw error
     }
+  }
+
+  private async setBucketPublicReadPolicy(): Promise<void> {
+    const policy = {
+      Version: '2012-10-17',
+      Statement: [
+        {
+          Sid: 'PublicRead',
+          Effect: 'Allow',
+          Principal: '*',
+          Action: ['s3:GetObject'],
+          Resource: [`arn:aws:s3:::${this.bucket}/*`]
+        }
+      ]
+    }
+    await this.client.setBucketPolicy(this.bucket, JSON.stringify(policy))
   }
 
   async upload(
