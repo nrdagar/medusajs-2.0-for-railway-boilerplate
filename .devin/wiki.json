@@ -34,16 +34,6 @@
       ]
     },
     {
-      "title": "Home Page & Marketing Components",
-      "purpose": "Covers the home page implementation and key marketing components like hero section, services display, and promotional content",
-      "parent": "Frontend (Storefront)",
-      "page_notes": [
-        {
-          "content": ""
-        }
-      ]
-    },
-    {
       "title": "Contact & Lead Generation System",
       "purpose": "Comprehensive coverage of the contact form system, the most important feature for lead generation",
       "parent": "Frontend (Storefront)",
