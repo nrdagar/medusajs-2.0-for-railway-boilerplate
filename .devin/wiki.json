@@ -1,0 +1,125 @@
+{
+  "repo_notes": [
+    {
+      "content": ""
+    }
+  ],
+  "pages": [
+    {
+      "title": "Overview",
+      "purpose": "Introduce the MedusaJS 2.0 dumpster rental monorepo, explaining its architecture, purpose, and key features",
+      "page_notes": [
+        {
+          "content": ""
+        }
+      ]
+    },
+    {
+      "title": "Frontend (Storefront)",
+      "purpose": "Overview of the Next.js storefront application, its architecture and main features",
+      "page_notes": [
+        {
+          "content": ""
+        }
+      ]
+    },
+    {
+      "title": "Application Layout & Structure",
+      "purpose": "Covers the root layout, page layouts, navigation system, and footer components that provide the structural foundation",
+      "parent": "Frontend (Storefront)",
+      "page_notes": [
+        {
+          "content": ""
+        }
+      ]
+    },
+    {
+      "title": "Location-Based Service System",
+      "purpose": "Detailed coverage of the city selection, zip code search, and geographic service area features that are central to the business model",
+      "parent": "Frontend (Storefront)",
+      "page_notes": [
+        {
+          "content": ""
+        }
+      ]
+    },
+    {
+      "title": "Home Page & Marketing Components",
+      "purpose": "Covers the home page implementation and key marketing components like hero section, services display, and promotional content",
+      "parent": "Frontend (Storefront)",
+      "page_notes": [
+        {
+          "content": ""
+        }
+      ]
+    },
+    {
+      "title": "Contact & Lead Generation System",
+      "purpose": "Comprehensive coverage of the contact form system, the most important feature for lead generation",
+      "parent": "Frontend (Storefront)",
+      "page_notes": [
+        {
+          "content": ""
+        }
+      ]
+    },
+    {
+      "title": "Dynamic Page Generation",
+      "purpose": "Covers the About Us and Service Area pages that use Next.js dynamic routing and static generation",
+      "parent": "Frontend (Storefront)",
+      "page_notes": [
+        {
+          "content": ""
+        }
+      ]
+    },
+    {
+      "title": "SEO & Social Media Optimization",
+      "purpose": "Covers structured data generation, social media images, and SEO configuration for search engine visibility",
+      "parent": "Frontend (Storefront)",
+      "page_notes": [
+        {
+          "content": ""
+        }
+      ]
+    },
+    {
+      "title": "Backend (MedusaJS)",
+      "purpose": "Overview of the MedusaJS backend configuration and custom modules",
+      "page_notes": [
+        {
+          "content": ""
+        }
+      ]
+    },
+    {
+      "title": "Backend Configuration",
+      "purpose": "Detailed explanation of the MedusaJS configuration including modules, plugins, and external service integrations",
+      "parent": "Backend (MedusaJS)",
+      "page_notes": [
+        {
+          "content": ""
+        }
+      ]
+    },
+    {
+      "title": "Contact Management Module",
+      "purpose": "Backend implementation of the contact submission system including API routes, services, and database schema",
+      "parent": "Backend (MedusaJS)",
+      "page_notes": [
+        {
+          "content": ""
+        }
+      ]
+    },
+    {
+      "title": "Development & Deployment",
+      "purpose": "Setup instructions, dependency management, and deployment configuration",
+      "page_notes": [
+        {
+          "content": ""
+        }
+      ]
+    }
+  ]
+}
