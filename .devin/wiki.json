@@ -24,16 +24,6 @@
       ]
     },
     {
-      "title": "Application Layout & Structure",
-      "purpose": "Covers the root layout, page layouts, navigation system, and footer components that provide the structural foundation",
-      "parent": "Frontend (Storefront)",
-      "page_notes": [
-        {
-          "content": ""
-        }
-      ]
-    },
-    {
       "title": "Location-Based Service System",
       "purpose": "Detailed coverage of the city selection, zip code search, and geographic service area features that are central to the business model",
       "parent": "Frontend (Storefront)",
