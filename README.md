@@ -104,3 +104,4 @@ Rename `.env.local.template` ->  `.env.local`
 <!-- Devin test line -->
 <!-- testing sleep mode -->
 <!-- This is a test line for a dummy PR -->
+<!-- Verification test: Devin can access repo, run lint, and create PRs -->
