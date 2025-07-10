@@ -40,40 +40,40 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   })
   
   // Add product pages
-  productsResponse.products.forEach(product => {
-    countryCodes.forEach(code => {
-      sitemapEntries.push({
+  sitemapEntries.push(
+    ...productsResponse.products.flatMap(product =>
+      countryCodes.map(code => ({
         url: `${baseUrl}/${code}/products/${product.handle}`,
         lastModified: new Date(product.updated_at),
-        changeFrequency: 'weekly',
+        changeFrequency: 'weekly' as const,
         priority: 0.8,
-      })
-    })
-  })
+      }))
+    )
+  )
   
   // Add collection pages
-  collections.forEach(collection => {
-    countryCodes.forEach(code => {
-      sitemapEntries.push({
+  sitemapEntries.push(
+    ...collections.flatMap(collection =>
+      countryCodes.map(code => ({
         url: `${baseUrl}/${code}/collections/${collection.handle}`,
         lastModified: new Date(),
-        changeFrequency: 'weekly',
+        changeFrequency: 'weekly' as const,
         priority: 0.7,
-      })
-    })
-  })
+      }))
+    )
+  )
   
   // Add category pages
-  product_categories.forEach(category => {
-    countryCodes.forEach(code => {
-      sitemapEntries.push({
+  sitemapEntries.push(
+    ...product_categories.flatMap(category =>
+      countryCodes.map(code => ({
         url: `${baseUrl}/${code}/categories/${category.handle}`,
         lastModified: new Date(),
-        changeFrequency: 'weekly',
+        changeFrequency: 'weekly' as const,
         priority: 0.7,
-      })
-    })
-  })
+      }))
+    )
+  )
   
   return sitemapEntries
 }
