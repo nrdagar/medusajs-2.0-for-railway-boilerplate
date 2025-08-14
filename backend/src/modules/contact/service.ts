@@ -31,8 +31,18 @@ export default class ContactService {
     return submission
   }
 
-  async list(): Promise<ContactSubmission[]> {
-    return await this.manager.find(ContactSubmission, {}, { orderBy: { created_at: "DESC" } })
+  async list(options: { limit?: number; offset?: number } = {}): Promise<{ submissions: ContactSubmission[]; count: number }> {
+    const { limit = 50, offset = 0 } = options
+    const [submissions, count] = await this.manager.findAndCount(
+      ContactSubmission, 
+      {}, 
+      { 
+        orderBy: { created_at: "DESC" },
+        limit,
+        offset
+      }
+    )
+    return { submissions, count }
   }
 
   async retrieve(id: string): Promise<ContactSubmission | null> {

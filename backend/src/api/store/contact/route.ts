@@ -38,9 +38,12 @@ export async function GET(
 ): Promise<void> {
   try {
     const contactService = req.scope.resolve(CONTACT_SERVICE)
-    const submissions = await contactService.list()
+    const limit = parseInt(req.query.limit as string) || 50
+    const offset = parseInt(req.query.offset as string) || 0
     
-    res.status(200).json({ submissions })
+    const result = await contactService.list({ limit, offset })
+    
+    res.status(200).json(result)
   } catch (error) {
     console.error("Error retrieving contact submissions:", error)
     res.status(500).json({ error: "Failed to retrieve contact submissions" })

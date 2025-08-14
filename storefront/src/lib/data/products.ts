@@ -109,32 +109,42 @@ export const getProductsListWithSort = cache(async function ({
   queryParams?: HttpTypes.FindParams & HttpTypes.StoreProductParams
 }> {
   const limit = queryParams?.limit || 12
+  const validPageParam = Math.max(page, 1)
+  
+  if (["price_asc", "price_desc"].includes(sortBy)) {
+    const {
+      response: { products, count },
+    } = await getProductsList({
+      pageParam: 0,
+      queryParams: {
+        ...queryParams,
+        limit: 100,
+      },
+      countryCode,
+    })
 
-  const {
-    response: { products, count },
-  } = await getProductsList({
-    pageParam: 0,
+    const sortedProducts = sortProducts(products, sortBy)
+    const pageParam = (validPageParam - 1) * limit
+    const nextPage = count > pageParam + limit ? validPageParam + 1 : null
+    const paginatedProducts = sortedProducts.slice(pageParam, pageParam + limit)
+
+    return {
+      response: {
+        products: paginatedProducts,
+        count,
+      },
+      nextPage,
+      queryParams,
+    }
+  }
+  
+  return getProductsList({
+    pageParam: validPageParam,
     queryParams: {
       ...queryParams,
-      limit: 100,
+      limit,
+      order: sortBy === "created_at" ? "created_at DESC" : undefined,
     },
     countryCode,
   })
-
-  const sortedProducts = sortProducts(products, sortBy)
-
-  const pageParam = (page - 1) * limit
-
-  const nextPage = count > pageParam + limit ? pageParam + limit : null
-
-  const paginatedProducts = sortedProducts.slice(pageParam, pageParam + limit)
-
-  return {
-    response: {
-      products: paginatedProducts,
-      count,
-    },
-    nextPage,
-    queryParams,
-  }
 })
