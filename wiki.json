@@ -15,11 +15,20 @@
       ]
     },
     {
+      "title": "Overview1",
+      "purpose": "Introduce1",
+      "page_notes": [
+        {
+          "content": ""
+        }
+      ]
+    },
+    {
       "title": "Frontend (Storefront)",
       "purpose": "Overview of the Next.js storefront application, its architecture and main features",
       "page_notes": [
         {
-          "content": "sddsdsd"
+          "content": ""
         }
       ]
     },
@@ -46,7 +55,7 @@
     {
       "title": "Dynamic Page Generation",
       "purpose": "Covers the About Us and Service Area pages that use Next.js dynamic routing and static generation",
-      "parent": "Frontend (Storefront))))",
+      "parent": "Frontend (Storefront)",
       "page_notes": [
         {
           "content": ""
