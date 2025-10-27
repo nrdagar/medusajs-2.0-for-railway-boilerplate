@@ -1,25 +1,30 @@
 {
   "repo_notes": [
     {
-      "content": ""
+      "content": "",
+      "author": null
     }
   ],
   "pages": [
     {
       "title": "Overview",
       "purpose": "Introduce the MedusaJS 2.0 dumpster rental monorepo, explaining its architecture, purpose, and key features",
+      "parent": null,
       "page_notes": [
         {
-          "content": ""
+          "content": "",
+          "author": null
         }
       ]
     },
     {
-      "title": "Frontend (Storefront)",
+      "title": "Frontend (Storefront)fg",
       "purpose": "Overview of the Next.js storefront application, its architecture and main features",
+      "parent": null,
       "page_notes": [
         {
-          "content": ""
+          "content": "",
+          "author": null
         }
       ]
     },
@@ -29,7 +34,8 @@
       "parent": "Frontend (Storefront)",
       "page_notes": [
         {
-          "content": ""
+          "content": "",
+          "author": null
         }
       ]
     },
@@ -39,7 +45,8 @@
       "parent": "Frontend (Storefront)",
       "page_notes": [
         {
-          "content": ""
+          "content": "",
+          "author": null
         }
       ]
     },
@@ -49,7 +56,8 @@
       "parent": "Frontend (Storefront)",
       "page_notes": [
         {
-          "content": ""
+          "content": "",
+          "author": null
         }
       ]
     },
@@ -59,16 +67,19 @@
       "parent": "Frontend (Storefront)",
       "page_notes": [
         {
-          "content": ""
+          "content": "",
+          "author": null
         }
       ]
     },
     {
       "title": "Backend (MedusaJS)",
       "purpose": "Overview of the MedusaJS backend configuration and custom modules",
+      "parent": null,
       "page_notes": [
         {
-          "content": ""
+          "content": "",
+          "author": null
         }
       ]
     },
@@ -78,7 +89,8 @@
       "parent": "Backend (MedusaJS)",
       "page_notes": [
         {
-          "content": ""
+          "content": "",
+          "author": null
         }
       ]
     },
@@ -88,16 +100,19 @@
       "parent": "Backend (MedusaJS)",
       "page_notes": [
         {
-          "content": ""
+          "content": "",
+          "author": null
         }
       ]
     },
     {
       "title": "Development & Deployment",
       "purpose": "Setup instructions, dependency management, and deployment configuration",
+      "parent": null,
       "page_notes": [
         {
-          "content": ""
+          "content": "",
+          "author": null
         }
       ]
     }
