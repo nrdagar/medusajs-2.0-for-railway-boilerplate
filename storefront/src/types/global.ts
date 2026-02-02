@@ -14,3 +14,5 @@ export type VariantPrice = {
   price_type: string
   percentage_diff: string
 }
+
+// Dummy change for testing PR - 1770062276

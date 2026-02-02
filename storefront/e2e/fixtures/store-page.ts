@@ -16,3 +16,4 @@ export class StorePage extends CategoryPage {
     await this.productsListLoader.waitFor({ state: "hidden" })
   }
 }
+// Dummy change for testing PR - 1770062276

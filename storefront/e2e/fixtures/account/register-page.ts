@@ -25,3 +25,5 @@ export class RegisterPage extends BasePage {
     this.loginLink = this.container.getByTestId("login-link")
   }
 }
+
+// Dummy change for testing PR - 1770062276

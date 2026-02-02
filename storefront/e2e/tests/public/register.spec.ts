@@ -65,3 +65,5 @@ test.describe("User registration functionality", async () => {
     await expect(accountOverviewPage.welcomeMessage).toBeVisible()
   })
 })
+
+// Dummy change for testing PR - 1770062276
