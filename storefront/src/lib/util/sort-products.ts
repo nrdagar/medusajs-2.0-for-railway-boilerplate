@@ -18,21 +18,19 @@ export function sortProducts(
   let sortedProducts = products as MinPricedProduct[]
 
   if (["price_asc", "price_desc"].includes(sortBy)) {
-    // Precompute the minimum price for each product
-    sortedProducts.forEach((product) => {
+    const productsWithMinPrice = sortedProducts.map((product) => {
+      let minPrice = Infinity
       if (product.variants && product.variants.length > 0) {
-        product._minPrice = Math.min(
+        minPrice = Math.min(
           ...product.variants.map(
             (variant) => variant?.calculated_price?.calculated_amount || 0
           )
         )
-      } else {
-        product._minPrice = Infinity
       }
+      return { ...product, _minPrice: minPrice }
     })
 
-    // Sort products based on the precomputed minimum prices
-    sortedProducts.sort((a, b) => {
+    sortedProducts = productsWithMinPrice.sort((a, b) => {
       const diff = a._minPrice! - b._minPrice!
       return sortBy === "price_asc" ? diff : -diff
     })
