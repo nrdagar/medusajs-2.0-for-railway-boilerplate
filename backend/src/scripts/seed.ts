@@ -325,13 +325,18 @@ export default async function seedDemoData({ container }: ExecArgs) {
     },
   });
 
+  const categoryLookup = new Map<string, string>();
+  categoryResult.forEach(category => {
+    categoryLookup.set(category.name, category.id);
+  });
+
   await createProductsWorkflow(container).run({
     input: {
       products: [
         {
           title: "Medusa T-Shirt",
           category_ids: [
-            categoryResult.find((cat) => cat.name === "Shirts")!.id,
+            categoryLookup.get("Shirts")!,
           ],
           description:
             "Reimagine the feeling of a classic T-shirt. With our cotton T-shirts, everyday essentials no longer have to be ordinary.",
@@ -517,7 +522,7 @@ export default async function seedDemoData({ container }: ExecArgs) {
         {
           title: "Medusa Sweatshirt",
           category_ids: [
-            categoryResult.find((cat) => cat.name === "Sweatshirts")!.id,
+            categoryLookup.get("Sweatshirts")!,
           ],
           description:
             "Reimagine the feeling of a classic sweatshirt. With our cotton sweatshirt, everyday essentials no longer have to be ordinary.",
@@ -617,7 +622,7 @@ export default async function seedDemoData({ container }: ExecArgs) {
         {
           title: "Medusa Sweatpants",
           category_ids: [
-            categoryResult.find((cat) => cat.name === "Pants")!.id,
+            categoryLookup.get("Pants")!,
           ],
           description:
             "Reimagine the feeling of classic sweatpants. With our cotton sweatpants, everyday essentials no longer have to be ordinary.",
@@ -717,7 +722,7 @@ export default async function seedDemoData({ container }: ExecArgs) {
         {
           title: "Medusa Shorts",
           category_ids: [
-            categoryResult.find((cat) => cat.name === "Merch")!.id,
+            categoryLookup.get("Merch")!,
           ],
           description:
             "Reimagine the feeling of classic shorts. With our cotton shorts, everyday essentials no longer have to be ordinary.",
