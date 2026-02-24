@@ -101,7 +101,4 @@ Rename `.env.local.template` ->  `.env.local`
     </div>
   </a>
 </p>
-<!-- Devin test line -->
-<!-- testing sleep mode -->
-<!-- This is a test line for a dummy PR -->
-<!-- Added by Devin for testing PR functionality -->
+<!-- Test PR verification - this PR should not be merged -->
